@@ -1,13 +1,166 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  color: var(--gray-00);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --main-00: #50c8ab;
+  --main-01: #50b2c8;
+  --main-02: #5080c8;
+  --gray-00: #3a3a3a;
+  --gray-01: #d9d9d9;
+  --gray-02: #efefef;
+  --red-00: #ff2c2c;
+  --orange-00: #ff842c;
+  --yellow-00: #ffc700;
+  --green-00: #1fba1c;
+  --cyan-00: #20c8d2;
+  --blue-00: #408cff;
+  --violet-00: #b20fff;
+  --pink-00: #ff6ba9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+button {
+  border: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+select {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100px;
+  padding: 2px 2px 2px 0px;
+  border: 2px solid var(--gray-01);
+  border-radius: 8px;
+  text-align: center;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border: 2px solid var(--blue-00);
+}
+
+.margin5{
+  margin-left: 5px;
+}
+
+.margin10{
+  margin-left: 10px;
+}
+
+.font1{
+  font-size: 0.7rem;
+}
+
+.font2 {
+  font-size: 0.8rem;
+}
+
+.font3 {
+  font-size: 0.9rem;
+}
+
+.font4 {
+  font-size: 1.0rem;
+}
+
+.font5 {
+  font-size: 1.1rem;
+}
+
+.font6 {
+  font-size: 1.2rem;
+}
+
+.font7 {
+  font-size: 1.3rem;
+}
+
+.font8 {
+  font-size: 1.4rem;
+}
+
+.fontbig {
+  font-size: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.frow {
+  display: flex;
+  flex-direction: row;
+}
+
+.frowrev {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.fcol {
+  display: flex;
+  flex-direction: column;
+}
+
+.fjcenter {
+  justify-content: center;
+}
+
+.fjsbetween {
+  justify-content: space-between;
+}
+
+.fjsaround {
+  justify-content: space-around;
+}
+
+.faccenter {
+  align-content: center;
+}
+
+.facsbetween {
+  align-content: space-between;
+}
+
+.facenter {
+  align-items: center;
+}
+
+.faend {
+  align-items: end;
+}
+
+.fwrap {
+  flex-wrap: wrap;
+}
+
+.shrink0 {
+  flex-shrink: 0;
+}
+
+.center {
+  margin: 0 auto;
 }
