@@ -32,31 +32,31 @@ const SearchPage = ({gameData, windowWidth}) => {
     useEffect(() => {
         setRenderNum(6);
         var tempData = [...gameData];
-        if(filterValue.title != '') {
-            const temptempData = tempData.filter(data => trimString(data.title).indexOf(filterValue.title) != -1 || trimString(data.titleEN).indexOf(filterValue.title) != -1);
-            if(temptempData.length != 0) {
+        if(filterValue.title !== '') {
+            const temptempData = tempData.filter(data => trimString(data.title).indexOf(filterValue.title) !== -1 || trimString(data.titleEN).indexOf(filterValue.title) !== -1);
+            if(temptempData.length !== 0) {
                 tempData = temptempData;
             }
         }
-        if(filterValue.player == 7) {
+        if(filterValue.player === 7) {
             tempData = tempData.filter(data => data.player[1] >= 7);
         }
-        else if(filterValue.player != 0) {
+        else if(filterValue.player !== 0) {
             tempData = tempData.filter(data => data.player[0] <= filterValue.player && data.player[1] >= filterValue.player);
         }
-        if(filterValue.weight != 0) {
+        if(filterValue.weight !== 0) {
             tempData = tempData.filter(data => data.weight == filterValue.weight);
         }
-        if(filterValue.system != '전체') {
+        if(filterValue.system !== '전체') {
             tempData = tempData.filter(data => data.system.indexOf(filterValue.system) >= 0);
         }
-        if(filterValue.sort == 0) {
+        if(filterValue.sort === 0) {
             tempData.sort((dataA, dataB) => dataA.title > dataB.title ? 1 : -1);
         }
-        else if(filterValue.sort == 1) {
+        else if(filterValue.sort === 1) {
             tempData.sort((dataA, dataB) => dataB.like - dataA.like);
         }
-        else if(filterValue.sort == 2) {
+        else if(filterValue.sort === 2) {
             tempData.sort((dataA, dataB) => dataB.rating - dataA.rating);
         }
         else {
