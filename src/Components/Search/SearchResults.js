@@ -23,7 +23,7 @@ const SearchResults = ({gameData, windowWidth, componentSize, renderNum, setRend
 
     return(
         <SearchResultsWrapper className="center" $width={componentSize.infoBoxWidth}>
-            <NumberOfSearchResults className="font6">{`총 ${gameData.length}건의 검색 결과가 있습니다.`}</NumberOfSearchResults>
+            <NumberOfSearchResults className="font6">{`총 ${gameData.length}건의 검색 결과가 있습니다!`}</NumberOfSearchResults>
             {gameData.map((data, index) => index < renderNum ? <SearchResultBoxTemplate key={index + 1} gameData={data} windowWidth={windowWidth} componentSize={componentSize} /> : null)}
             <div ref={target}></div>
         </SearchResultsWrapper>
