@@ -19,7 +19,7 @@ const DetailInfoSliderBar = styled.div`
     height: 2px;
     margin-top: 6px;
     margin-bottom: 10px;
-    background-color: var(--main-02);
+    background-color: var(--main-01);
     transition-property: transform;
     transition-duration: 0.5s;
     transform: ${(props) => `translateX(${props.$posX}px)`};

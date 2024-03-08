@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useEffect, useState } from "react";
+import MainBanner from '../Others/MainBanner';
 import CardSlider from "../Card/CardSlider";
 import TopButton from "../Others/TopButton";
 
@@ -29,11 +30,14 @@ const MainPage = ({gameData, windowWidth}) => {
 
     return(
         <>
+            <MainPageElement>
+                <MainBanner windowWidth={windowWidth} />
+            </MainPageElement>
             <MainPageElement $marginTop={20} $marginBottom={50}>
-                <CardSlider key={0} title={'추천 보드게임'} gameData={gameData[0]} componentSize={componentSize} link={'a'}/>
+                <CardSlider key={0} title={'추천 보드게임'} gameData={gameData[0]} buttonColor={'var(--main-02)'} componentSize={componentSize} link={'a'}/>
             </MainPageElement>
             <MainPageElement $marginTop={50} $marginBottom={50}>
-                <CardSlider key={1} title={'초보 추천 보드게임'} gameData={gameData[1]} componentSize={componentSize} link={'a'}/>
+                <CardSlider key={1} title={'초보 추천 보드게임'} gameData={gameData[1]} buttonColor={'var(--main-02)'} componentSize={componentSize} link={'a'}/>
             </MainPageElement>
             <TopButton windowWidth={windowWidth} />
         </>

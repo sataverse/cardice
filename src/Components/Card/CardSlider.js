@@ -41,7 +41,7 @@ const CardSliderButton = styled.div`
     }
 `
 
-const CardSlider = ({id, title, gameData, componentSize, link}) => {
+const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
     const [cardIndex, setCardIndex] = useState(0);
     const [moveButtonVisible, setMoveButtonVisible] = useState({left: false, right: false});
     const isMin = () => cardIndex <= 0;
@@ -89,20 +89,20 @@ const CardSlider = ({id, title, gameData, componentSize, link}) => {
     }, [componentSize.sliderWidth])
 
     return(
-        <CardSliderWrapper id={id}>
+        <CardSliderWrapper>
             <CardSliderHeader className="frow fjsbetween faend center" $sliderWidth={componentSize.sliderWidth}>
                 {!title ? null : <CardSliderTitle $fontSize={componentSize.titleFont}>{title}</CardSliderTitle>}
                 {!link ? null : <CardSliderLink>{'더 보기'}</CardSliderLink>}
             </CardSliderHeader>
             <div className="frow fjcenter">
                 <CardSliderButtonWrapper onMouseOver={() => showMoveButton(0)} onMouseOut={() => hideMoveButton(0)}>
-                    {!isMin() && moveButtonVisible.left ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderLeft()}><LeftButton width={30} height={30} /></CardSliderButton> : null}
+                    {!isMin() && moveButtonVisible.left ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderLeft()}><LeftButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
                 </CardSliderButtonWrapper>
                 <CardSliderCardsWrapper className="frow" $sliderWidth={componentSize.sliderWidth}>
                     {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={cardIndex * (componentSize.cardWidth + 20)} marginBottom={0} />)} 
                 </CardSliderCardsWrapper>
                 <CardSliderButtonWrapper onMouseOver={() => showMoveButton(1)} onMouseOut={() => hideMoveButton(1)}>
-                    {!isMax() && moveButtonVisible.right ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderRight()}><RightButton width={30} height={30} /></CardSliderButton> : null}
+                    {!isMax() && moveButtonVisible.right ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderRight()}><RightButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
                 </CardSliderButtonWrapper>
             </div>
         </CardSliderWrapper>
