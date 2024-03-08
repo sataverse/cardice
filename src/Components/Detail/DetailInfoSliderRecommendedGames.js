@@ -9,7 +9,7 @@ const DetailInfoSliderRecommendedGamesWrapper = styled.div`
 const DetailInfoSliderRecommendedGames = ({gameData, componentSize}) => {
     return(
         <DetailInfoSliderRecommendedGamesWrapper $width={componentSize.detailBoxWidth}>
-            <CardSlider gameData={gameData} componentSize={componentSize} />
+            <CardSlider gameData={gameData} componentSize={componentSize} buttonColor={'var(--main-01)'} />
         </DetailInfoSliderRecommendedGamesWrapper>
     );
 }
