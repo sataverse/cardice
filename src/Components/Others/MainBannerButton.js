@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 const MainBannerButtonWrapper = styled.button`
-    width: 20px;
-    height: 20px;
-    margin: 0 8px 0 8px;
-    border-radius: 20px;
+    width: 16px;
+    height: 16px;
+    margin: 0 6px 0 6px;
+    padding: 0;
+    border-radius: 16px;
     background-color: ${(props) => `${props.$backgroundColor}`};
     transition-property: background-color;
     transition-duration: 0.5s;

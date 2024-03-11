@@ -31,7 +31,7 @@ const FilterButtons = ({type, items, changeFilterValue}) => {
         <FilterButtonsWrapper className="frow">
             <FilterTypeText>{type}</FilterTypeText>
             <div className="frow fwrap">
-                {items.map((item, index) => <FilterSelectButton key={index} $val={item.value} $clicked={index == selectedIndex} onClick={() => clickButton(item.value, index)}>{item.buttonText}</FilterSelectButton>)}
+                {items.map((item, index) => <FilterSelectButton key={index} $val={item.value} $clicked={index === selectedIndex} onClick={() => clickButton(item.value, index)}>{item.buttonText}</FilterSelectButton>)}
             </div>
         </FilterButtonsWrapper>
     );

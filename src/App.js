@@ -21,8 +21,8 @@ const d1 = [...gameData].sort((a, b) => a.ranking[0] - b.ranking[0]).slice(0, 10
 const d2 = [...gameData].filter(a => a.ranking[1] > 0).sort((a, b) => a.ranking[1] - b.ranking[1]);
 const d3 = [...gameData].filter(a => a.ranking[2] > 0).sort((a, b) => a.ranking[2] - b.ranking[2]);
 //const d3 = [...gameData].sort((a, b) => b.like - a.like).slice(0, 100);
-const d4 = [...gameData].sort((a, b) => (a.rating != b.rating) ? b.rating - a.rating : b.reviewers - a.reviewers).slice(0, 100);
-const d5 = [...gameData].sort((a, b) => (a.reviewers != b.reviewers) ? b.reviewers - a.reviewers : b.like - a.like).slice(0, 100);
+const d4 = [...gameData].sort((a, b) => (a.rating !== b.rating) ? b.rating - a.rating : b.reviewers - a.reviewers).slice(0, 100);
+const d5 = [...gameData].sort((a, b) => (a.reviewers !== b.reviewers) ? b.reviewers - a.reviewers : b.like - a.like).slice(0, 100);
 
 const App = () => {
   const delay = 50;
