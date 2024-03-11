@@ -29,7 +29,7 @@ const CardImage = ({url, numberTag, brightness, componentSize}) => {
     return(
         <>
             <CardImageWrapper $cardWidth={componentSize.cardWidth} $imgURL={url} $brightness={brightness} />
-            {numberTag == 0 ? null : <CardImageNumberTag>{numberTag}</CardImageNumberTag>}
+            {numberTag === 0 ? null : <CardImageNumberTag>{numberTag}</CardImageNumberTag>}
         </>
         
     );

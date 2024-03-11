@@ -45,7 +45,7 @@ const SearchPage = ({gameData, windowWidth}) => {
             tempData = tempData.filter(data => data.player[0] <= filterValue.player && data.player[1] >= filterValue.player);
         }
         if(filterValue.weight !== 0) {
-            tempData = tempData.filter(data => data.weight == filterValue.weight);
+            tempData = tempData.filter(data => data.weight === filterValue.weight);
         }
         if(filterValue.system !== '전체') {
             tempData = tempData.filter(data => data.system.indexOf(filterValue.system) >= 0);

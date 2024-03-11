@@ -26,7 +26,7 @@ const DetailInfoSliderBar = styled.div`
 `
 
 const DetailInfoSliderConetentsWrapper = styled.div`
-    height: ${(props) => props.$height == 0 ? '300px' : 'auto'};
+    height: ${(props) => props.$height === 0 ? '300px' : 'auto'};
     transition-property: transform;
     transition-duration: 0.5s;
     transform: ${(props) => `translateX(${props.$posX}px)`};

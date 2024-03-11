@@ -22,8 +22,8 @@ const MainBanner = ({windowWidth}) => {
 
     return(
         <MainBannerWrapper className="center" $windowWidth={windowWidth}>
-            {imageLinks.map((data, index) => <MainBannerImage key={index} link={data} windowWidth={windowWidth} opacity={index == showIndex ? 1 : 0} zindex={getZindex(index)} />)}
-            <MainBannerButtonGroup bannerArray={imageLinks} windowWidth={windowWidth} showIndex={showIndex} setShowIndex={setShowIndex} />
+            {imageLinks.map((data, index) => <MainBannerImage key={index} link={data} opacity={index === showIndex ? 1 : 0} zindex={getZindex(index)} />)}
+            <MainBannerButtonGroup bannerArray={imageLinks} showIndex={showIndex} setShowIndex={setShowIndex} />
         </MainBannerWrapper>
     );
 }

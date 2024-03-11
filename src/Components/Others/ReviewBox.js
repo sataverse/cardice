@@ -18,7 +18,7 @@ const ReviewBox = ({review}) => {
     return(
         <ReviewBoxWrapper className="frow">
             <ReviewBoxElement>
-                <RatingStar width={60} height={60} color={getColorRating(review.rating)} rating={getFloatFixed(review.rating)} posX={review.rating == 10 ? 36 : 46} />
+                <RatingStar width={60} height={60} color={getColorRating(review.rating)} rating={getFloatFixed(review.rating)} posX={review.rating === 10 ? 36 : 46} />
             </ReviewBoxElement>
             <div className="fcol fjsbetween">
                 <div className="frow">

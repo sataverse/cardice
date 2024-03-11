@@ -47,7 +47,7 @@ const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
     const isMin = () => cardIndex <= 0;
     const isMax = () => cardIndex >= gameData.length - componentSize.numberOfCards;
     const showMoveButton = dir => {
-        if(dir == 0) {
+        if(dir === 0) {
             setMoveButtonVisible({...moveButtonVisible, left: true});
         }
         else {
@@ -55,7 +55,7 @@ const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
         }
     }
     const hideMoveButton = dir => {
-        if(dir == 0) {
+        if(dir === 0) {
             setMoveButtonVisible({...moveButtonVisible, left: false});
         }
         else {

@@ -33,7 +33,7 @@ const ModalFrame = ({modalStatus, changeModal}) => {
     return(
         <ModalBackgroundWrapper onClick={() => changeModal(0)}>
             <ModalWrapper onClick={e => e.stopPropagation()}>
-                {modalStatus == 1 ? <ModalSignIn changeModal={changeModal} /> : <ModalSignUp changeModal={changeModal} />}
+                {modalStatus === 1 ? <ModalSignIn changeModal={changeModal} /> : <ModalSignUp changeModal={changeModal} />}
             </ModalWrapper>
         </ModalBackgroundWrapper>
     );

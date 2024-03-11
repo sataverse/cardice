@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const BannerImage = styled.img`
     position: absolute;
-    width: ${(props) => `${props.$windowWidth - 40}px`};
+    width: 100%;
     height: 400px;
     border-radius: 8px;
     object-fit: contain;
@@ -13,9 +13,9 @@ const BannerImage = styled.img`
     transition-duration: 1s;
 `
 
-const MainBannerImage = ({link, windowWidth, opacity, zindex}) => {
+const MainBannerImage = ({link, opacity, zindex}) => {
     return(
-        <BannerImage src={link} $windowWidth={windowWidth} $opacity={opacity} $zindex={zindex} />
+        <BannerImage src={link} $opacity={opacity} $zindex={zindex} />
     );
 }
 

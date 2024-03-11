@@ -39,7 +39,7 @@ const Pagination = ({pageSize, elements}) => {
             <div className="frow fjcenter facenter">
                 {buttonStatus[0] ? <PageButton onClick={() => setCurrentPage(1)}><LeftLeftButton width={30} height={30} color={'var(--main-01)'} /></PageButton> : null}
                 {buttonStatus[0] ? <PageButton onClick={() => setCurrentPage(currentPage - ((currentPage - 1) % 10) - 10)}><LeftButton width={30} height={30} color={'var(--main-01)'} /></PageButton> : null}
-                {pageArray.filter(data => Math.ceil(data / 10) == Math.ceil(currentPage / 10)).map(data => <PageButton className="font6" $isCurrent={data == currentPage} onClick={() => setCurrentPage(data)}>{data}</PageButton>)}
+                {pageArray.filter(data => Math.ceil(data / 10) === Math.ceil(currentPage / 10)).map(data => <PageButton className="font6" $isCurrent={data === currentPage} onClick={() => setCurrentPage(data)}>{data}</PageButton>)}
                 {buttonStatus[1] ? <PageButton onClick={() => setCurrentPage(Math.ceil(currentPage / 10) * 10 + 1)}><RightButton width={30} height={30} color={'var(--main-01)'} /></PageButton> : null}
                 {buttonStatus[1] ? <PageButton onClick={() => setCurrentPage(maxPage)}><RightRightButton width={30} height={30} color={'var(--main-01)'} /></PageButton> : null}
             </div>
