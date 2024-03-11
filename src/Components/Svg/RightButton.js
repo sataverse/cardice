@@ -7,4 +7,4 @@ const RightButton = ({width, height, color}) => {
     );
 }
 
-export default RightButton
+export default RightButton;
