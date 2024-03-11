@@ -10,7 +10,7 @@ const MainBannerWrapper = styled.div`
     padding: 20px 0 20px 0;
 `
 
-const imageLinks = ["/gameImg/2.png", "/gameImg/3.png", "/gameImg/5.png", "/gameImg/6.png", "/gameImg/12.png"];
+const imageLinks = ["/bannerImg/main1.png", "/bannerImg/main2.png", "/bannerImg/main3.png", "/bannerImg/main4.png", "/bannerImg/main5.png"];
 
 const MainBanner = ({windowWidth}) => {
     const [showIndex, setShowIndex] = useState(0);

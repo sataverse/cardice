@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ButtonWrapper = styled.button`
     width: ${(props) => `${props.$width}px`};
-    height: 30px;
+    height: ${(props) => `${props.$width}px`};
     margin: 5px 0 5px 0;
     padding: 0;
     border-radius: 6px;

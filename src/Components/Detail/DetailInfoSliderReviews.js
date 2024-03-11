@@ -3,6 +3,7 @@ import { useState } from "react";
 import { compareDate } from "../../Modules/util";
 import review from "../../Data/review.json"
 import ReviewBox from "../Others/ReviewBox";
+import Pagination from "../Others/Pagination";
 
 const SortComboBox = styled.div`
     margin: 10px 0px 10px 0px;
@@ -10,6 +11,7 @@ const SortComboBox = styled.div`
 
 const DetailInfoSliderReviewsWrapper = styled.div`
     width: ${(props) => `${props.$width + 40}px`};
+    padding: 5px 0 30px 0;
     flex-shrink: 0;
 `
 
@@ -35,7 +37,7 @@ const DetailInfoSliderReviews = ({reviewIds, componentSize}) => {
                 <div>{'정렬 기준'}</div>
             </SortComboBox>
             <DetailInfoSliderReviewsWrapper $width={componentSize.detailBoxWidth}>
-                {reviewData.sort(sortFunc[curretSort]).map((data, index) => <ReviewBox key={index} review={data} />)}
+                <Pagination pageSize={5} elements={[...reviewData.sort(sortFunc[curretSort]).map((data, index) => <ReviewBox key={index} review={data} />)]}/>
             </DetailInfoSliderReviewsWrapper>
         </div>
     );

@@ -7,4 +7,4 @@ const LeftButton = ({width, height, color}) => {
     );
 }
 
-export default LeftButton
+export default LeftButton;
