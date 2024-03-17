@@ -32,13 +32,10 @@ const ModalSignUp = ({changeModal}) => {
             </LogoWrapper>
             <ModalText text={'회원가입'} />
             <ModalInputText type={'text'} placeholder={'닉네임'} changeText={setNickname}/>
-            {nickname === null ? null : nickname === '' ? <ModalFailText text={'닉네임을 입력해주세요.'} /> : <ModalFailText text={'이미 사용 중인 닉네임입니다.'} />}
+            {!nickname ? null : nickname === '' ? <ModalFailText text={'닉네임을 입력해주세요.'} /> : <ModalFailText text={'이미 사용 중인 닉네임입니다.'} />}
             <ModalInputText type={'text'} placeholder={'이메일'} />
-            <ModalFailText text={'이미 가입된 이메일입니다.'} />
             <ModalInputText type={'password'} placeholder={'비밀번호'} />
-            <ModalFailText text={'비밀번호는 최소 4자리 이상이어야 합니다.'} />
             <ModalInputText type={'password'} placeholder={'비밀번호 재입력'} />
-            <ModalFailText text={'비밀번호가 일치하지 않습니다.'} />
             <ModalButton text={'회원가입'} />
             <ModalTextWithButton text={'이미 가입하셨나요?'} buttonText={'로그인'} changeModal={() => changeModal(1)}/>
         </div>
@@ -46,3 +43,9 @@ const ModalSignUp = ({changeModal}) => {
 }
 
 export default ModalSignUp;
+
+/*
+<ModalFailText text={'이미 가입된 이메일입니다.'} />
+<ModalFailText text={'비밀번호는 최소 4자리 이상이어야 합니다.'} />
+<ModalFailText text={'비밀번호가 일치하지 않습니다.'} />
+*/
