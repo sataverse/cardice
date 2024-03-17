@@ -44,7 +44,7 @@ const NavButtons = () => {
                 </HeaderButtonIconWrapper>
                 <div>랭킹</div>
             </HeaderButtonWrapper>
-            <HeaderButtonWrapper className='frow facenter' onClick={() => navigate('/community')}>
+            <HeaderButtonWrapper className='frow facenter'>
                 <HeaderButtonIconWrapper>
                     <CommunityIcon width={20} height={20} />
                 </HeaderButtonIconWrapper>
@@ -55,23 +55,3 @@ const NavButtons = () => {
 }
 
 export default NavButtons;
-
-/*
-<Link to={'/search'} className="link">
-                <HeaderButtonWrapper className='frow facenter'>
-                    <HeaderButtonIconWrapper>
-                        <SearchIcon width={20} height={20} />
-                    </HeaderButtonIconWrapper>
-                    <div>검색</div>
-                </HeaderButtonWrapper>
-            </Link>
-            <Link to={'/rank'} className="link">
-                <HeaderButtonWrapper className='frow facenter'>
-                    <HeaderButtonIconWrapper>
-                        <RankIcon width={20} height={20} />
-                    </HeaderButtonIconWrapper>
-                    <div>랭킹</div>
-                </HeaderButtonWrapper>
-            </Link>
-
-*/

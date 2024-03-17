@@ -53,7 +53,6 @@ const App = () => {
         <Route path='/' element={<MainPage gameData={[bestData, zeroData]} windowWidth={windowWidth} />} />
         <Route path='/search' element={<SearchPage gameData={gameData} windowWidth={windowWidth} />} />
         <Route path='/rank' element={<RankPage gameData={[d1, d2, d3, d4, d5]} windowWidth={windowWidth} />} />
-        <Route path='/community' element={<CommunityPage />} />
         <Route path='/detail' element={<DetailPage windowWidth={windowWidth} />} />
       </Routes>
     </>
