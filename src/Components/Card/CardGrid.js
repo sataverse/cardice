@@ -13,7 +13,7 @@ const CardGridWrapper = styled.div`
 const CardGrid = ({gameData, componentSize, posX}) => {
     return(
         <CardGridWrapper className="frow fwrap" $gridWidth={componentSize.gridWidth} $posX={posX}>
-            {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={0} marginBottom={50} />)} 
+            {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={0} marginBottom={20} />)} 
         </CardGridWrapper>
     );
 }

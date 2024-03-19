@@ -99,7 +99,7 @@ const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
                     {!isMin() && moveButtonVisible.left ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderLeft()}><LeftButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
                 </CardSliderButtonWrapper>
                 <CardSliderCardsWrapper className="frow" $sliderWidth={componentSize.sliderWidth}>
-                    {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={cardIndex * (componentSize.cardWidth + 20)} marginBottom={0} />)} 
+                    {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={cardIndex * (componentSize.cardWidth + 20)} />)} 
                 </CardSliderCardsWrapper>
                 <CardSliderButtonWrapper onMouseOver={() => showMoveButton(1)} onMouseOut={() => hideMoveButton(1)}>
                     {!isMax() && moveButtonVisible.right ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderRight()}><RightButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
