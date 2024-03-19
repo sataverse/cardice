@@ -33,6 +33,7 @@ const SearchResultButton = styled.button`
 
 const SearchResultSmallBox = ({gameData}) => {
     const navigate = useNavigate();
+    const openYoutube = () => window.open(gameData.youtube, '_blank', 'noopener, noreferrer');
     return(
         <SearchResultBoxWrapper className="frow fjsbetween facenter">
             <SearchResultImage $imgURL={gameData.image} />
@@ -45,7 +46,7 @@ const SearchResultSmallBox = ({gameData}) => {
                     <SearchResultInfoSmallBox type={'난이도'} text={getTextWeight(gameData.weight)} color={getColorWeight(gameData.weight)} />
                 </div>
                 <div className="frow fjsbetween">
-                    <SearchResultButton className="font3">{'설명영상'}</SearchResultButton>
+                    <SearchResultButton className="font3" onClick={() => openYoutube()}>{'설명영상'}</SearchResultButton>
                     <SearchResultButton className="font3" onClick={() => navigate(`/detail?id=${gameData.id}`)}>{'자세히보기'}</SearchResultButton>
                 </div>
             </SearchResultInfosWrapper>

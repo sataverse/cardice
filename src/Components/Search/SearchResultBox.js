@@ -34,20 +34,21 @@ const SearchResultButton = styled.button`
 
 const SearchResultBox = ({gameData, windowWidth, componentSize}) => {
     const navigate = useNavigate();
+    const openYoutube = () => window.open(gameData.youtube, '_blank', 'noopener, noreferrer');
     return(
         <SearchResultBoxWrapper className="frow fjsbetween facenter">
             <SearchResultImage $imgURL={gameData.image} />
             <SearchResultInfosWrapper className="fcol fjsbetween" $width={componentSize.infoBoxWidth - 200}>
                 <div className="frow fjsbetween faend">
                     <div className="font6">{gameData.title}</div>
-                    {windowWidth >= 840 ? null : <SearchResultButton>{'설명영상'}</SearchResultButton>}
+                    {windowWidth >= 840 ? null : <SearchResultButton onClick={() => openYoutube()}>{'설명영상'}</SearchResultButton>}
                 </div>
                 <div className="frow">
                     <SearchResultInfoBox componentSize={componentSize} type={'평점'} text={`★ ${getFloatFixed(gameData.rating, 1)}`} color={getColorRating(gameData.rating)} />
                     <SearchResultInfoBox componentSize={componentSize} type={'인원'} text={getRangeText(gameData.player[0], gameData.player[1]) + '인'} color={getColorWeight(0)} />
                     <SearchResultInfoBox componentSize={componentSize} type={'플레이 시간'} text={getRangeText(gameData.playTime[0], gameData.playTime[1]) + '분'} color={getColorWeight(0)} />
                     <SearchResultInfoBox componentSize={componentSize} type={'난이도'} text={getTextWeight(gameData.weight)} color={getColorWeight(gameData.weight)} />
-                    {windowWidth >= 840 ? <SearchResultYoutubeBox width={100} height={50} /> : null}
+                    {windowWidth >= 840 ? <SearchResultYoutubeBox width={100} height={50} onClick={() => openYoutube()} /> : null}
                 </div>
                 <div className="frow fjsbetween">
                     <div>{gameData.system.map(s => '#' + s).join(` `)}</div>

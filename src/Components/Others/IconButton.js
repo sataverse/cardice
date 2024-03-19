@@ -13,9 +13,9 @@ const ButtonIconWrapper = styled.div`
     position: relative;
 `
 
-const IconButton = ({icon, buttonWidth}) => {
+const IconButton = ({icon, buttonWidth, onClick}) => {
     return(
-        <ButtonWrapper $width={buttonWidth}>
+        <ButtonWrapper $width={buttonWidth} onClick={() => onClick()}>
             <ButtonIconWrapper>{icon}</ButtonIconWrapper>
         </ButtonWrapper>
     )

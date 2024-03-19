@@ -19,9 +19,9 @@ const ButtonTextWrapper = styled.div`
     text-align: center;
 `
 
-const IconTextButton = ({icon, buttonWidth, text}) => {
+const IconTextButton = ({icon, buttonWidth, text, onClick}) => {
     return(
-        <ButtonWrapper className="frow fjsaround facenter" $width={buttonWidth}>
+        <ButtonWrapper className="frow fjsaround facenter" $width={buttonWidth} onClick={() => onClick()}>
             <ButtonIconWrapper $top={3}>{icon}</ButtonIconWrapper>
             <ButtonTextWrapper>{text}</ButtonTextWrapper>
         </ButtonWrapper>
