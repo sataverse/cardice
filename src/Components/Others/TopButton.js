@@ -9,6 +9,7 @@ const TopButtonWrapper = styled.button`
     border: 0 solid var(--gray-00);
     border-radius: 10px;
     background-color: white;
+    z-index: 98;
     box-shadow: 0px 0px 5px 2px var(--gray-01);
     @media (min-width: 721px){
         & {

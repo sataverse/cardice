@@ -12,7 +12,7 @@ const FilterTypeText = styled.div`
 
 const FilterSelectButton = styled.button`
     width: ${(props) => isNaN(props.$val) ? '90px' : '60px'};
-    margin: 0 5px 5px 5px;
+    margin: 0px 5px 5px 5px;
     padding: 0;
     border-radius: 6px;
     background-color: ${(props) => props.$clicked ? 'var(--main-00)' : 'white'};

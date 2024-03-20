@@ -27,6 +27,7 @@ const SearchResultInfosWrapper = styled.div`
 `
 
 const SearchResultButton = styled.button`
+    padding: 0;
     color: var(--blue-00);
     background-color: transparent;
 `
@@ -46,7 +47,6 @@ const SearchResultSmallBox = ({gameData}) => {
                     <SearchResultInfoSmallBox type={'난이도'} text={getTextWeight(gameData.weight)} color={getColorWeight(gameData.weight)} />
                 </div>
                 <div className="frow fjsbetween">
-                    <SearchResultButton className="font3" onClick={() => openYoutube()}>{'설명영상'}</SearchResultButton>
                     <SearchResultButton className="font3" onClick={() => navigate(`/detail?id=${gameData.id}`)}>{'자세히보기'}</SearchResultButton>
                 </div>
             </SearchResultInfosWrapper>

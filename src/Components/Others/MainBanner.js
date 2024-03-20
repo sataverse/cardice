@@ -5,9 +5,8 @@ import MainBannerButtonGroup from "./MainBannerButtonGroup";
 
 const MainBannerWrapper = styled.div`
     position: relative;
-    width: ${(props) => `${props.$windowWidth - 40}px`};
-    height: 400px;
-    padding: 20px 0 20px 0;
+    width: 100%;
+    height: ${(props) => `${props.$windowWidth * 1 / 4}px`};
 `
 
 const imageLinks = ["/bannerImg/main1.png", "/bannerImg/main2.png", "/bannerImg/main3.png", "/bannerImg/main4.png", "/bannerImg/main5.png"];

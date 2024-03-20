@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {getFloatFixed, getRangeText, getColorRating, getColorWeight, getTextWeight} from "../../Modules/util";
+import IconButton from "../Others/IconButton";
+import YoutubeIcon from "../Svg/YoutubeIcon";
 import SearchResultInfoBox from "./SearchResultInfoBox";
 import SearchResultYoutubeBox from "./SearchResultYoutubeBox";
 
@@ -32,6 +34,10 @@ const SearchResultButton = styled.button`
     background-color: transparent;
 `
 
+const SystemText = styled.div`
+    margin: 0 5px 0 5px;
+`
+
 const SearchResultBox = ({gameData, windowWidth, componentSize}) => {
     const navigate = useNavigate();
     const openYoutube = () => window.open(gameData.youtube, '_blank', 'noopener, noreferrer');
@@ -41,7 +47,6 @@ const SearchResultBox = ({gameData, windowWidth, componentSize}) => {
             <SearchResultInfosWrapper className="fcol fjsbetween" $width={componentSize.infoBoxWidth - 200}>
                 <div className="frow fjsbetween faend">
                     <div className="font6">{gameData.title}</div>
-                    {windowWidth >= 840 ? null : <SearchResultButton onClick={() => openYoutube()}>{'설명영상'}</SearchResultButton>}
                 </div>
                 <div className="frow">
                     <SearchResultInfoBox componentSize={componentSize} type={'평점'} text={`★ ${getFloatFixed(gameData.rating, 1)}`} color={getColorRating(gameData.rating)} />
@@ -51,7 +56,9 @@ const SearchResultBox = ({gameData, windowWidth, componentSize}) => {
                     {windowWidth >= 840 ? <SearchResultYoutubeBox width={100} height={50} onClick={() => openYoutube()} /> : null}
                 </div>
                 <div className="frow fjsbetween">
-                    <div>{gameData.system.map(s => '#' + s).join(` `)}</div>
+                    <div className="frow">
+                        {gameData.system.map(item => <SystemText className="font3">{'• ' + item}</SystemText>)}
+                    </div>
                     <SearchResultButton onClick={() => navigate(`/detail?id=${gameData.id}`)}>{'자세히보기'}</SearchResultButton>
                 </div>
             </SearchResultInfosWrapper>
@@ -60,3 +67,5 @@ const SearchResultBox = ({gameData, windowWidth, componentSize}) => {
 }
 
 export default SearchResultBox;
+
+//{windowWidth >= 840 ? null : <SearchResultButton onClick={() => openYoutube()}>{'설명영상'}</SearchResultButton>}
