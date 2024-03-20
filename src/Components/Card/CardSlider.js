@@ -35,7 +35,7 @@ const CardSliderButtonWrapper = styled.div`
 const CardSliderButton = styled.div`
     position: relative;
     height: 30px;
-    top: ${(props) => `${props.$cardWidth / 2 - 15}px`};
+    top: ${(props) => `${props.$cardWidth * 1.2 / 2 - 15}px`};
     &:hover {
         cursor: pointer;
     }

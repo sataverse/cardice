@@ -11,16 +11,19 @@ const MainPageElement = styled.div`
 
 const getComponentSize = width => {
     if(width >= 1380) {
-        return {sliderWidth: 1300, cardWidth: 240, numberOfCards: 5, titleFont: 1.6, cardFont: 0.9};
+        return {sliderWidth: 1300, cardWidth: 240, numberOfCards: 5, titleFont: 1.6};
     }
     else if(width >= 1120) {
-        return {sliderWidth: 1040, cardWidth: 240, numberOfCards: 4, titleFont: 1.6, cardFont: 0.9};
+        return {sliderWidth: 1040, cardWidth: 240, numberOfCards: 4, titleFont: 1.6};
     }
     else if(width >= 860) {
-        return {sliderWidth: 780, cardWidth: 240, numberOfCards: 3, titleFont: 1.6, cardFont: 0.9};
+        return {sliderWidth: 780, cardWidth: 240, numberOfCards: 3, titleFont: 1.6};
+    }
+    else if(width >= 680) {
+        return {sliderWidth: width - 80, cardWidth: 240 - (860 - width) * 1 / 3, numberOfCards: 3, titleFont: 1.3};
     }
     else {
-        return {sliderWidth: width - 80, cardWidth: 240 - (860 - width) * 1 / 3, numberOfCards: 3, titleFont: 1.3, cardFont: 0.8};
+        return {sliderWidth: width - 80, cardWidth: 280 - (680 - width) * 1 / 2, numberOfCards: 2, titleFont: 1.3};
     }
 }
 

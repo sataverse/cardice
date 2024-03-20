@@ -1,45 +1,29 @@
 import styled from "styled-components";
-import { getRangeText, getTextWeight } from "../../Modules/util";
-import { TimeIcon, PlayerIcon, CardIcon  } from "../Svg/CardIcon";
+import { getColorRating, getFloatFixed } from "../../Modules/util";
 
 const CardFrontInformationWrapper = styled.div`
     position: absolute;
-    width: 120px;
-    height: 90px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-`
-
-const IconWrapper = styled.div`
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    border-radius: 0 0 8px 8px;
+    background-color: rgba(0, 0, 0, 0.85);
 `
 
 const Text = styled.div`
-    color: white;
+    height: 24px;
+    padding: 0 8px 0 8px;
+    color: ${(props) => props.$textColor};
+    overflow: hidden;
 `
 
 const CardFrontInformation = ({gameInfo}) => {
     return(
-        <CardFrontInformationWrapper className="fcol fjsbetween">
-            <div className="frow fjsbetween facenter">
-                <IconWrapper>
-                    <PlayerIcon width={20} height={20} />
-                </IconWrapper>
-                <Text className="font3">{getRangeText(gameInfo.player[0], gameInfo.player[1]) + '인'}</Text>
-            </div>
-            <div className="frow fjsbetween facenter">
-                <IconWrapper>
-                    <TimeIcon width={20} height={20} />
-                </IconWrapper>
-                <Text className="font3">{getRangeText(gameInfo.playTime[0], gameInfo.playTime[1]) + '분'}</Text>
-            </div>
-            <div className="frow fjsbetween facenter">
-                <IconWrapper>
-                    <CardIcon width={20} height={20} />
-                </IconWrapper>
-                <Text className="font3">{getTextWeight(gameInfo.weight) + ' 단계'}</Text>
+        <CardFrontInformationWrapper className="fcol fjsaround">
+            <Text className="center" $textColor={'#ffffff'}>{gameInfo.title}</Text>
+            <div className="frow fjcenter">
+                <Text $textColor={getColorRating(gameInfo.rating)}>{`★ ${getFloatFixed(gameInfo.rating, 1)}`}</Text>
+                <Text $textColor={'var(--red-00)'}>{`♥ ${gameInfo.like}`}</Text>
             </div>
         </CardFrontInformationWrapper>
     );

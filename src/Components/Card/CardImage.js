@@ -31,7 +31,7 @@ const CardImage = ({gameInfo, numberTag, isMouseOver, componentSize}) => {
     return(
         <>
             <CardImageWrapper $cardWidth={componentSize.cardWidth} $imgURL={gameInfo.image} $isMouseOver={isMouseOver} />
-            {isMouseOver ? <CardFrontInformation gameInfo={gameInfo} /> : <CardBackInformation gameInfo={gameInfo} />}
+            {isMouseOver ? <CardBackInformation gameInfo={gameInfo} /> : <CardFrontInformation gameInfo={gameInfo} />}
             {numberTag === 0 ? null : <CardImageNumberTag>{numberTag}</CardImageNumberTag>}
         </>
     );

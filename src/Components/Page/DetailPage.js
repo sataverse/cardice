@@ -8,16 +8,16 @@ import TopButton from "../Others/TopButton";
 
 const getComponentSize = width => {
     if(width >= 1040) {
-        return {detailBoxWidth: 960, starSize: 80, titleFont: 2, basicFont: 1, rowListMargin: '0 10px 0 10px', sliderWidth: 920, cardWidth: 210, cardHeight: 300, numberOfCards: 4, cardFont: 0.9};
+        return {detailBoxWidth: 960, starSize: 80, titleFont: 2, basicFont: 1, rowListMargin: '0 10px 0 10px', sliderWidth: 920, cardWidth: 210, numberOfCards: 4};
     }
     else if(width >= 840) {
-        return {detailBoxWidth: width - 80, starSize: 70, titleFont: 1.7, basicFont: 1, rowListMargin: '0 10px 0 10px', sliderWidth: width - 120, cardWidth: 210 - (1040 - width) * 1 / 4, numberOfCards: 4, cardFont: 0.9};
+        return {detailBoxWidth: width - 80, starSize: 70, titleFont: 1.7, basicFont: 1, rowListMargin: '0 10px 0 10px', sliderWidth: width - 120, cardWidth: 210 - (1040 - width) * 1 / 4, numberOfCards: 4};
     }
     else if(width > 720) {
-        return {detailBoxWidth: width - 80, starSize: 60, titleFont: 1.2, basicFont: 0.9, rowListMargin: '0 6px 0 6px', sliderWidth: width - 120, cardWidth: 210 - (1040 - width) * 1 / 4, numberOfCards: 4, cardFont: 0.8};
+        return {detailBoxWidth: width - 80, starSize: 60, titleFont: 1.2, basicFont: 0.9, rowListMargin: '0 6px 0 6px', sliderWidth: width - 120, cardWidth: 220 - (840 - width) * 1 / 3, numberOfCards: 3};
     }
     else {
-        return {detailBoxWidth: width - 80, starSize: 60, titleFont: 1.2, basicFont: 1.0, rowListMargin: '0 10px 0 10px', sliderWidth: width - 120, cardWidth: 180 - (720 - width) * 1 / 3, numberOfCards: 3, cardFont: 0.8};
+        return {detailBoxWidth: width - 80, starSize: 60, titleFont: 1.2, basicFont: 1.0, rowListMargin: '0 10px 0 10px', sliderWidth: width - 120, cardWidth: 280 - (720 - width) * 1 / 2, numberOfCards: 2};
     }
 }
 
