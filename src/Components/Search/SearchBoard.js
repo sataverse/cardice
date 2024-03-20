@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import SearchIcon from '../Svg/SearchIcon';
 import FilterButtons from "./FilterButtons";
 import CloseButton from "../Others/CloseButton";
+import { SearchIcon } from "../Svg/NavigationIcon";
 import FilterIcon from "../Svg/FilterIcon";
 import { useState, useEffect } from "react";
 

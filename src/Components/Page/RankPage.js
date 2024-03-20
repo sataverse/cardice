@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import CardGridSlider from "../Card/CardGridSlider";
-import TopButton from "../Others/TopButton";
 
 const getComponentSize = width => {
     if(width >= 1380) {
@@ -25,10 +24,7 @@ const RankPage = ({gameData, windowWidth}) => {
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
 
     return(
-        <>
-            <CardGridSlider gameData={gameData} componentSize={componentSize} />
-            <TopButton windowWidth={windowWidth} />
-        </>
+        <CardGridSlider gameData={gameData} componentSize={componentSize} />
     );
 }
 

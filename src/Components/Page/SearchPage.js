@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { trimString } from "../../Modules/util";
 import SearchBoard from "../Search/SearchBoard"
 import SearchResults from "../Search/SearchResults";
-import TopButton from "../Others/TopButton";
 
 const getComponentSize = width => {
     if(width >= 840) {
@@ -69,7 +68,6 @@ const SearchPage = ({gameData, windowWidth}) => {
         <>
             <SearchBoard componentSize={componentSize} changeSearchWord={changeSearchWord} changeSort={changeSort} changePlayer={changePlayer} changeWeight={changeWeight} changeSystem={changeSystem} />
             <SearchResults gameData={searchGameData} windowWidth={windowWidth} componentSize={componentSize} renderNum={renderNum} setRenderNum={setRenderNum} />
-            <TopButton windowWidth={windowWidth} />
         </>
     );
 }

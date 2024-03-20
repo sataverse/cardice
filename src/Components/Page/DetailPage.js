@@ -4,7 +4,6 @@ import DetailInfoBox from "../Detail/DetailInfoBox"
 import gameData from '../../Data/boardgame.json'
 import DetailInfoSmallBox from "../Detail/DetailInfoSmallBox";
 import DetailInfoSlider from "../Detail/DetailInfoSlider";
-import TopButton from "../Others/TopButton";
 
 const getComponentSize = width => {
     if(width >= 1040) {
@@ -33,7 +32,6 @@ const DetailPage = ({windowWidth}) => {
         <>
             {windowWidth > 720 ? <DetailInfoBox gameInfo={gameData[gameId]} componentSize={componentSize} /> : <DetailInfoSmallBox gameInfo={gameData[parseInt(searchParams.get('id'))]} componentSize={componentSize} />}
             <DetailInfoSlider recommendGameData={recommends} reviewIds={gameData[gameId].review} componentSize={componentSize} />
-            <TopButton windowWidth={windowWidth} />
         </>
         
     );
