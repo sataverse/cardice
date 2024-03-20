@@ -9,6 +9,8 @@ import DetailInfoBoxButtons from "./DetailInfoBoxButtons";
 
 const DetailInfoBoxWrapper = styled.div`
     width: ${(props) => `${props.$width}px`};
+    margin-top: 20px;
+    margin-bottom: 10px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     background-color: var(--gray-02);

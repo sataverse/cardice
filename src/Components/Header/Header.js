@@ -41,11 +41,11 @@ const HeaderButtonWrapper = styled.button`
 
 const HeaderHr = styled.div`
     height: 2px;
-    width: ${(props) => `${props.$windowWidth - 40}px`};
+    width: 100%;
     background-color: lightgray;
 `
 
-const Header = ({windowWidth, componentSize, changeModal}) => {
+const Header = ({componentSize, changeModal}) => {
     const navigate = useNavigate();
     return (
         <HeaderWrapper>
@@ -62,7 +62,7 @@ const Header = ({windowWidth, componentSize, changeModal}) => {
                     <HeaderButtonWrapper $margin={componentSize.margin} onClick={() => changeModal(2)}>{'회원가입'}</HeaderButtonWrapper>
                 </HeaderMenuWrapper>
             </HeaderMainWrapper>
-            <HeaderHr className='center' $windowWidth={windowWidth} />
+            <HeaderHr />
         </HeaderWrapper>
     );
 }

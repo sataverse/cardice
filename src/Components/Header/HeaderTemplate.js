@@ -24,7 +24,7 @@ const HeaderTemplate = ({windowWidth}) => {
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
     return (
         <>
-            {windowWidth > 720 ? <Header windowWidth={windowWidth} componentSize={componentSize} changeModal={setModalStatus} /> : <SmallHeader windowWidth={windowWidth} componentSize={componentSize} changeModal={setModalStatus} />}
+            {windowWidth > 720 ? <Header componentSize={componentSize} changeModal={setModalStatus} /> : <SmallHeader componentSize={componentSize} changeModal={setModalStatus} />}
             {modalStatus === 0 ? null : <ModalFrame modalStatus={modalStatus} changeModal={setModalStatus}/>}
         </>
     );

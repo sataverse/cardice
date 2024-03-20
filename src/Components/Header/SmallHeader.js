@@ -30,11 +30,11 @@ const HeaderButtonWrapper = styled.button`
 
 const HeaderHr = styled.div`
     height: 2px;
-    width: ${(props) => `${props.$windowWidth - 40}px`};
+    width: 100%;
     background-color: lightgray;
 `
 
-const SmallHeader = ({windowWidth, componentSize, changeModal}) => {
+const SmallHeader = ({componentSize, changeModal}) => {
     const navigate = useNavigate();
     return (
         <HeaderWrapper>
@@ -52,7 +52,7 @@ const SmallHeader = ({windowWidth, componentSize, changeModal}) => {
                     <NavButtons />
                 </div>
             </HeaderMainWrapper>
-            <HeaderHr className='center' $windowWidth={windowWidth} />
+            <HeaderHr />
         </HeaderWrapper>
     );
 }

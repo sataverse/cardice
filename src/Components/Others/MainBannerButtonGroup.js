@@ -6,7 +6,7 @@ import RightButton from "../Svg/RightButton";
 const MainBannerButtonGroupWrapper = styled.div`
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: 0px;
     height: 28px;
     transform: translate(-50%, -50%);
     border-radius: 28px;
