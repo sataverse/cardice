@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { useEffect, useState } from "react";
 import MainBanner from '../Others/MainBanner';
 import CardSlider from "../Card/CardSlider";
-import TopButton from "../Others/TopButton";
 
 const MainPageElement = styled.div`
     margin-top: ${(props) => `${props.$marginTop}px`};
@@ -42,7 +41,6 @@ const MainPage = ({gameData, windowWidth}) => {
             <MainPageElement $marginTop={50} $marginBottom={50}>
                 <CardSlider key={1} title={'초보 추천 보드게임'} gameData={gameData[1]} buttonColor={'var(--main-02)'} componentSize={componentSize} link={'a'}/>
             </MainPageElement>
-            <TopButton windowWidth={windowWidth} />
         </>
     );
 }

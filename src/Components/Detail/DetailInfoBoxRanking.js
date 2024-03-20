@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RankIcon from "../Svg/RankIcon";
+import { RankIcon } from "../Svg/NavigationIcon";
 
 const Text = styled.div`
     margin-left: ${(props) => `${props.$margin}px`};
