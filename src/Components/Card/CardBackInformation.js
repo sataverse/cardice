@@ -1,27 +1,45 @@
 import styled from "styled-components";
-import { getColorRating, getFloatFixed } from "../../Modules/util";
+import { getRangeText, getTextWeight } from "../../Modules/util";
+import { TimeIcon, PlayerIcon, CardIcon  } from "../Svg/CardIcon";
 
 const CardBackInformationWrapper = styled.div`
     position: absolute;
-    width: 100%;
-    height: 60px;
-    bottom: 0;
-    border-radius: 0 0 8px 8px;
-    background-color: rgba(0, 0, 0, 0.85);
+    width: 120px;
+    height: 90px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+`
+
+const IconWrapper = styled.div`
+    width: 20px;
+    height: 20px;
 `
 
 const Text = styled.div`
-    color: ${(props) => props.$textColor};
+    color: white;
 `
 
 const CardBackInformation = ({gameInfo}) => {
     return(
-        <CardBackInformationWrapper className="fcol fjsaround">
-            <Text className="center" $textColor={'#ffffff'}>{gameInfo.title}</Text>
-            <div className="frow fjcenter">
-                <Text $textColor={getColorRating(gameInfo.rating)}>{`★ ${getFloatFixed(gameInfo.rating, 1)}`}</Text>
-                <Text $textColor={'#ffffff'}>{' ┃ '}</Text>
-                <Text $textColor={'var(--red-00)'}>{`♥ ${gameInfo.like}`}</Text>
+        <CardBackInformationWrapper className="fcol fjsbetween">
+            <div className="frow fjsbetween facenter">
+                <IconWrapper>
+                    <PlayerIcon width={20} height={20} />
+                </IconWrapper>
+                <Text>{getRangeText(gameInfo.player[0], gameInfo.player[1]) + '인'}</Text>
+            </div>
+            <div className="frow fjsbetween facenter">
+                <IconWrapper>
+                    <TimeIcon width={20} height={20} />
+                </IconWrapper>
+                <Text>{getRangeText(gameInfo.playTime[0], gameInfo.playTime[1]) + '분'}</Text>
+            </div>
+            <div className="frow fjsbetween facenter">
+                <IconWrapper>
+                    <CardIcon width={20} height={20} />
+                </IconWrapper>
+                <Text>{getTextWeight(gameInfo.weight) + ' 단계'}</Text>
             </div>
         </CardBackInformationWrapper>
     );
