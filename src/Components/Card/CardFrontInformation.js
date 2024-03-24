@@ -6,7 +6,7 @@ const CardFrontInformationWrapper = styled.div`
     width: 100%;
     height: 60px;
     bottom: 0;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 4px 4px;
     background-color: rgba(0, 0, 0, 0.85);
 `
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const GameImage = styled.img`
-    border-radius: 10px;
+    border-radius: 4px;
     width: ${(props) => `${props.$imageWidth}px`};
     object-fit: cover;
 `

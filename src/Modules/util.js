@@ -26,6 +26,7 @@ export const getColorRating = rating => {
 export const getColorWeight = weight => color[weight];
 export const getTextWeight = weight => ['입문', '초보', '중수', '고수', '초고수', '전문가'][weight - 1];
 export const getDateText = (year, month, day, hour, minute) => `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")} ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+export const getGradeText = grade => ['마스터', '매니저', '일반 회원'][grade];
 export const compareDate = (a, b) => {
     const [yearA, monthA, dayA, hourA, minuteA] = a;
     const [yearB, monthB, dayB, hourB, minuteB] = b;

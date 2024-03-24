@@ -8,7 +8,7 @@ const ModalInputTextWrapper = styled.input`
     margin-bottom: 5px;
     padding: 2px 10px 2px 10px;
     border: 2px solid transparent;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: var(--gray-02);
     &:hover {
         border: 2px solid var(--main-01);

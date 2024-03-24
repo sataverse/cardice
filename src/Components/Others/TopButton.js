@@ -8,7 +8,7 @@ const TopButtonWrapper = styled.button`
     right: 20px;
     padding: 0;
     border: 0 solid var(--gray-00);
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: white;
     z-index: 98;
     box-shadow: 0px 0px 5px 2px var(--gray-01);

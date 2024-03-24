@@ -6,7 +6,7 @@ const ModalButtonWrapper = styled.button`
     margin-top: 15px;
     margin-bottom: 15px;
     border: 2px solid transparent;
-    border-radius: 8px;
+    border-radius: 4px;
     text-align: center;
     color: white;
     background-color: var(--main-01);
