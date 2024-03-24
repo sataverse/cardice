@@ -14,6 +14,7 @@ import SearchPage from './Components/Page/SearchPage';
 import RankPage from './Components/Page/RankPage';
 import CommunityPage from './Components/Page/CommunityPage';
 import DetailPage from './Components/Page/DetailPage';
+import UserPage from './Components/Page/UserPage';
 
 const bestData = [gameData[19], gameData[12], gameData[40], gameData[30], gameData[28], gameData[22], gameData[67], gameData[142], gameData[49], gameData[64], gameData[3], gameData[41], gameData[24], gameData[27], gameData[48], gameData[39]];
 const zeroData = [gameData[1], gameData[4], gameData[13], gameData[14], gameData[17], gameData[18], gameData[26], gameData[31], gameData[32], gameData[33], gameData[34], gameData[37], gameData[38], gameData[42], gameData[45], gameData[50], gameData[51], gameData[52], gameData[53], gameData[54], gameData[55], gameData[60], gameData[61], gameData[62], gameData[65], gameData[66], gameData[68]];
@@ -23,7 +24,7 @@ const d2 = [...gameData].filter(a => a.ranking[1] > 0).sort((a, b) => a.ranking[
 const d3 = [...gameData].filter(a => a.ranking[2] > 0).sort((a, b) => a.ranking[2] - b.ranking[2]);
 
 const App = () => {
-  const delay = 50;
+  const delay = 500;
   const {pathname, search} = useLocation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalStatus, setModalStatus] = useState(0);
@@ -53,6 +54,7 @@ const App = () => {
         <Route path='/search' element={<SearchPage gameData={gameData} windowWidth={windowWidth} />} />
         <Route path='/rank' element={<RankPage gameData={[d1, d2, d3]} windowWidth={windowWidth} />} />
         <Route path='/detail' element={<DetailPage windowWidth={windowWidth} />} />
+        <Route path='/user' element={<UserPage windowWidth={windowWidth} />} />
       </Routes>
       {windowWidth > 720 ? <TopButton /> : null}
       {modalStatus === 0 ? null : <ModalFrame modalStatus={modalStatus} changeModal={setModalStatus}/>}

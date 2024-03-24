@@ -5,7 +5,7 @@ import CardBackInformation from "./CardBackInformation";
 const CardImageWrapper = styled.div`
     width: ${(props) => `${props.$cardWidth}px`};
     height: ${(props) => `${props.$cardWidth * 1.2}px`};
-    border-radius: 8px;
+    border-radius: 4px;
     background-image: ${(props) => `url(${props.$imgURL})`};
     background-size: cover;
     background-position: top center;

@@ -13,7 +13,7 @@ const SearchBarOuterWrapper = styled.div`
     width: ${(props) => `${props.$width}px`};
     height: 30px;
     padding: 0 12px 0 6px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: var(--gray-02);
     border: ${(props) => props.$border ? '2px solid var(--main-00)' : '2px solid transparent'};
 `
@@ -37,14 +37,14 @@ const FilterBoxWrapper = styled.div`
     width: ${(props) => `${props.$width}px`};
     margin-top: 10px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: var(--gray-02);
 `
 
 const FilterBoxButton = styled.button`
     width: 100px;
     margin-left: 10px;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: var(--gray-02);
 `
 

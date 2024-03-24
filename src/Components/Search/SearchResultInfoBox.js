@@ -4,12 +4,13 @@ const SearchResultInfoBoxWrapper = styled.div`
     width: 100px;
     height: 50px;
     margin-right: ${(props) => `${props.$marginRight}px`};
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: white;
 `
 
 const SearchResultInfoBoxType = styled.div`
     text-align: center;
+    color: #959595;
 `
 
 const SearchResultInfoBoxText = styled.div`

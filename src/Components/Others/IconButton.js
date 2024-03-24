@@ -5,7 +5,7 @@ const ButtonWrapper = styled.button`
     height: ${(props) => `${props.$width}px`};
     margin: 5px 0 5px 0;
     padding: 0;
-    border-radius: 6px;
+    border-radius: 4px;
     background-color: white;
 `
 

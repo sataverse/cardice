@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const SearchResultInfoSmallBoxType = styled.div`
     width: 100px;
+    color: #959595;
 `
 
 const SearchResultInfoSmallBoxText = styled.div`

@@ -12,7 +12,7 @@ const DetailInfoBoxWrapper = styled.div`
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 10px 20px 10px 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: var(--gray-02);
 `
 

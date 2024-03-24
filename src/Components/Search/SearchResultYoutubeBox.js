@@ -4,7 +4,7 @@ const SearchResultInfoBoxWrapper = styled.button`
     width: ${(props) => props.$width};
     height: ${(props) => props.$height};
     padding: 0;
-    border-radius: 10px;
+    border-radius: 4px;
 `
 
 const SearchResultYoutubeBox = ({width, height, onClick}) => {

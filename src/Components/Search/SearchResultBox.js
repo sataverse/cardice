@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {getFloatFixed, getRangeText, getColorRating, getColorWeight, getTextWeight} from "../../Modules/util";
-import IconButton from "../Others/IconButton";
-import YoutubeIcon from "../Svg/YoutubeIcon";
 import SearchResultInfoBox from "./SearchResultInfoBox";
 import SearchResultYoutubeBox from "./SearchResultYoutubeBox";
 
@@ -10,14 +8,14 @@ const SearchResultBoxWrapper = styled.div`
     height: 160px;
     margin: 20px 0 20px 0;
     padding: 0 20px 0 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: var(--gray-02);
 `
 
 const SearchResultImage = styled.div`
     width: 140px;
     height: 140px;
-    border-radius: 10px;
+    border-radius: 4px;
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
