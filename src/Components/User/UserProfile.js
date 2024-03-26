@@ -7,6 +7,10 @@ const UserProfilePicture = styled.div`
     margin: 5px 0 5px;
     border-radius: 50px;
     background-color: white;
+    background-image: ${(props) => `url(${props.$imgURL})`};
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 `
 
 const UserProfileText = styled.div`
@@ -16,7 +20,7 @@ const UserProfileText = styled.div`
 const UserProfile = ({userInfo}) => {
     return(
         <div>
-            <UserProfilePicture />
+            <UserProfilePicture $imgURL={'/icon/Default_Profile.png'}/>
             <div className="frow facenter">
                 <UserProfileText className="font8">{userInfo.nickname}</UserProfileText>
                 <UserProfileText className="font3">{`(${getGradeText(userInfo.grade)})`}</UserProfileText>

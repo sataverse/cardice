@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { loadLocalStorage } from "../../Modules/util";
 import UserInformationBox from "../User/UserInformationBox";
 import userData from "../../Data/user.json";
 import gameData from "../../Data/boardgame.json";
+import reviewData from "../../Data/review.json"
 
 const getComponentSize = width => {
     if(width >= 840) {
@@ -17,9 +19,14 @@ const getComponentSize = width => {
 
 const UserPage = ({windowWidth}) => {
     const [componentSize, setComponentSize] = useState(getComponentSize(windowWidth));
+    const myReviewData = reviewData.filter(item => item.userid === loadLocalStorage('id'));
+    const reviewGameData = [[], [], [], [], [], [], [], [], [], []];
+    myReviewData.forEach(item => {
+        reviewGameData[10 - item.rating].push(gameData[item.gameid]);
+    });
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
     return(
-        <UserInformationBox gameData={userData[3].like.map(item => gameData[item])} componentSize={componentSize} userInfo={userData[3]} />
+        <UserInformationBox likeGameData={userData[loadLocalStorage('id')].like.map(item => gameData[item])} reviewGameData={reviewGameData} componentSize={componentSize} userInfo={userData[loadLocalStorage('id')]} />
     );
 }
 
