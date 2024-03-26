@@ -12,6 +12,13 @@ npm start
 http://127.0.0.1:3000/
 ```
 
+### 로그인
+```
+email : skullking@gmail.com
+password : 0000
+```
+API 서버와 아직 연결되지 않아 임시 구현하였습니다.
+
 
 ### 업데이트 내용
 

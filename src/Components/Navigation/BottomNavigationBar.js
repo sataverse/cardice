@@ -16,7 +16,7 @@ const NavigationButton = styled.button`
     background-color: transparent;
 `
 
-const BottomNavigationBar = ({changeModal}) => {
+const BottomNavigationBar = ({signinStatus, changeModal}) => {
     const navigate = useNavigate();
 
     return(
@@ -37,7 +37,7 @@ const BottomNavigationBar = ({changeModal}) => {
                 <CommunityIcon width={24} height={24} />
                 <div className="font2">{'커뮤니티'}</div>
             </NavigationButton>
-            <NavigationButton onClick={() => changeModal(1)}>
+            <NavigationButton onClick={() => signinStatus ? navigate('/user') : changeModal(1)}>
                 <UserIcon width={24} height={24} />
                 <div className="font2">{'마이'}</div>
             </NavigationButton>

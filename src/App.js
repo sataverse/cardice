@@ -2,7 +2,8 @@ import './App.css';
 import gameData from './Data/boardgame.json'
 
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { loadLocalStorage } from './Modules/util';
 
 import TopNavigationBar from './Components/Navigation/TopNavigationBar';
 import BottomNavigationBar from './Components/Navigation/BottomNavigationBar';
@@ -28,6 +29,7 @@ const App = () => {
   const {pathname, search} = useLocation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [modalStatus, setModalStatus] = useState(0);
+  const [signinStatus, setSigninStatus] = useState(loadLocalStorage('id'));
 
   useEffect(() => {
     var timer = null;
@@ -48,7 +50,7 @@ const App = () => {
 
   return (
     <>
-      {windowWidth > 720 ? <TopNavigationBar windowWidth={windowWidth} changeModal={setModalStatus} /> : null}
+      {windowWidth > 720 ? <TopNavigationBar windowWidth={windowWidth} signinStatus={signinStatus} changeModal={setModalStatus} /> : null}
       <Routes>
         <Route path='/' element={<MainPage gameData={[bestData, zeroData]} windowWidth={windowWidth} />} />
         <Route path='/search' element={<SearchPage gameData={gameData} windowWidth={windowWidth} />} />
@@ -57,8 +59,8 @@ const App = () => {
         <Route path='/user' element={<UserPage windowWidth={windowWidth} />} />
       </Routes>
       {windowWidth > 720 ? <TopButton /> : null}
-      {modalStatus === 0 ? null : <ModalFrame modalStatus={modalStatus} changeModal={setModalStatus}/>}
-      {windowWidth > 720 ? null : <BottomNavigationBar changeModal={setModalStatus} />}
+      {modalStatus === 0 ? null : <ModalFrame modalStatus={modalStatus} changeModal={setModalStatus} setSigninStatus={setSigninStatus} />}
+      {windowWidth > 720 ? null : <BottomNavigationBar signinStatus={signinStatus} changeModal={setModalStatus} />}
     </>
   );
 }

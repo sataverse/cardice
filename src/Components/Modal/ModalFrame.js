@@ -25,7 +25,7 @@ const ModalWrapper = styled.div`
     background-color: white;
 `
 
-const ModalFrame = ({modalStatus, changeModal}) => {
+const ModalFrame = ({modalStatus, changeModal, setSigninStatus}) => {
     useEffect(() => {
         const prevScrollY = preventScroll();
         return () => allowScroll(prevScrollY);
@@ -33,7 +33,7 @@ const ModalFrame = ({modalStatus, changeModal}) => {
     return(
         <ModalBackgroundWrapper onClick={() => changeModal(0)}>
             <ModalWrapper onClick={e => e.stopPropagation()}>
-                {modalStatus === 1 ? <ModalSignIn changeModal={changeModal} /> : <ModalSignUp changeModal={changeModal} />}
+                {modalStatus === 1 ? <ModalSignIn changeModal={changeModal} setSigninStatus={setSigninStatus} /> : <ModalSignUp changeModal={changeModal} />}
             </ModalWrapper>
         </ModalBackgroundWrapper>
     );

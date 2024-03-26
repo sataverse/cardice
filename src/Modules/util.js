@@ -1,5 +1,7 @@
 const color = ['var(--gray-00)', 'var(--blue-00)', 'var(--cyan-00)', 'var(--green-00)', 'var(--yellow-00)', 'var(--orange-00)', 'var(--red-00)', 'var(--violet-00)'];
 
+export const saveLocalStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+export const loadLocalStorage = key => JSON.parse(localStorage.getItem(key));
 export const trimString = str => str.toLowerCase().replace(/(\s*)/g, "").replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,'');
 export const getFloatFixed = (value, fixed) => value >= 10 ? 10 : parseFloat(Math.round(value * 100) / 100).toFixed(fixed);
 export const getRangeText = (min, max) => min == max ? min : `${min} ~ ${max}`;
@@ -13,10 +15,10 @@ export const getColorRating = rating => {
     else if(rating >= 7) {
         return color[3];
     }
-    else if(rating >= 6) {
+    else if(rating >= 5) {
         return color[4];
     }
-    else if(rating >= 4) {
+    else if(rating >= 3) {
         return color[5];
     }
     else {

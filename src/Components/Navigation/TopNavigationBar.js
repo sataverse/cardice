@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import TopNavigationButtons from './TopNavigationButtons';
 import Logo from '../Svg/Logo';
+import { UserIcon } from '../Svg/NavigationIcon';
 
 const TopNavigationBarWrapper = styled.div`
     position: sticky;
@@ -55,7 +56,25 @@ const getComponentSize = width => {
     }
 }
 
-const TopNavigationBar = ({windowWidth, changeModal}) => {
+const SignInUpButtons = ({componentSize, changeModal}) => {
+    return(
+        <>
+            <ButtonWrapper $margin={componentSize.margin} onClick={() => changeModal(1)}>{'로그인'}</ButtonWrapper>
+            <ButtonWrapper $margin={componentSize.margin} onClick={() => changeModal(2)}>{'회원가입'}</ButtonWrapper>
+        </>
+    );
+}
+
+const UserPageButton = ({}) => {
+    const navigate = useNavigate();
+    return(
+        <ButtonWrapper className='frow facenter' onClick={() => navigate('/user')}>
+            <UserIcon width={20} height={20} />
+        </ButtonWrapper>
+    );
+}
+
+const TopNavigationBar = ({windowWidth, signinStatus, changeModal}) => {
     const navigate = useNavigate();
     const [componentSize, setComponentSize] = useState(getComponentSize(windowWidth));
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
@@ -71,8 +90,7 @@ const TopNavigationBar = ({windowWidth, changeModal}) => {
                 </MenuWrapper>
                 <BlankWrapper />
                 <MenuWrapper className='frow'>
-                    <ButtonWrapper $margin={componentSize.margin} onClick={() => changeModal(1)}>{'로그인'}</ButtonWrapper>
-                    <ButtonWrapper $margin={componentSize.margin} onClick={() => changeModal(2)}>{'회원가입'}</ButtonWrapper>
+                    {signinStatus ? <UserPageButton /> : <SignInUpButtons componentSize={componentSize} changeModal={changeModal} />}
                 </MenuWrapper>
             </TopNavigationBarMainWrapper>
         </TopNavigationBarWrapper>
