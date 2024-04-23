@@ -1,8 +1,11 @@
 import CardGrid from "../Card/CardGrid";
+import SkeletonCardGrid from "../Skeleton/SkeletonCardGrid";
 
 const UserLike = ({gameData, componentSize}) => {
     return(
-        <CardGrid gameData={gameData} componentSize={componentSize} posX={0} />
+        <>
+            {!gameData ? <SkeletonCardGrid componentSize={componentSize} /> : <CardGrid gameData={gameData} componentSize={componentSize} posX={0} />}
+        </>
     );
 }
 

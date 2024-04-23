@@ -26,6 +26,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
@@ -108,6 +109,29 @@ select:focus {
 
 .link {
   text-decoration: none;
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@keyframes skeleton-gradient {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.skeleton {
+  animation: skeleton-gradient 3s infinite ease-in-out;
 }
 
 .frow {

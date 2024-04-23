@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { loadLocalStorage } from "../../Modules/util";
 import UserInformationBox from "../User/UserInformationBox";
-import userData from "../../Data/user.json";
-import gameData from "../../Data/boardgame.json";
-import reviewData from "../../Data/review.json"
 
 const getComponentSize = width => {
     if(width >= 840) {
@@ -19,14 +16,43 @@ const getComponentSize = width => {
 
 const UserPage = ({windowWidth}) => {
     const [componentSize, setComponentSize] = useState(getComponentSize(windowWidth));
-    const myReviewData = reviewData.filter(item => item.userid === loadLocalStorage('id'));
-    const reviewGameData = [[], [], [], [], [], [], [], [], [], []];
-    myReviewData.forEach(item => {
-        reviewGameData[10 - item.rating].push(gameData[item.gameid]);
-    });
+    const [likeGameData, setLikeGameData] = useState(null);
+    const [reviewGameData, setReviewGameData] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const likeGameIds = loadLocalStorage('like').boardgame;
+                if(likeGameIds.length > 0) {
+                    var response = await fetch(`http://localhost:3001/boardgame?id=${likeGameIds.join(',')}`);
+                    const jsonData = await response.json();
+                    setLikeGameData(jsonData.data);
+                }
+
+                const reviewIds = loadLocalStorage('review');
+                if(reviewIds.length > 0) {
+                    const tempData = [[], [], [], [], [], [], [], [], [], []];
+                    response = await fetch(`http://localhost:3001/review?id=${reviewIds.join(',')}`);
+                    const reviewJsonData = await response.json();
+
+                    const reviewGameIds = reviewJsonData.data.map(item => item.gameid);
+                    response = await fetch(`http://localhost:3001/boardgame?id=${reviewGameIds.join(',')}`);
+                    const gameJsonData = await response.json();
+                    for(var i = 0; i < reviewJsonData.data.length; i++) {
+                        tempData[10 - reviewJsonData.data[i].rating].push(gameJsonData.data[i]);
+                    }
+                    setReviewGameData(tempData);
+                }  
+            } catch(error) {
+                console.log(error);
+            }
+        })();
+    }, []);
+
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
+
     return(
-        <UserInformationBox likeGameData={userData[loadLocalStorage('id')].like.map(item => gameData[item])} reviewGameData={reviewGameData} componentSize={componentSize} userInfo={userData[loadLocalStorage('id')]} />
+        <UserInformationBox likeGameData={likeGameData} reviewGameData={reviewGameData} componentSize={componentSize} />
     );
 }
 

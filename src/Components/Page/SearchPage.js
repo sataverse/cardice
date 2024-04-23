@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { trimString } from "../../Modules/util";
+import { useFilter } from "../../Modules/store";
 import SearchBoard from "../Search/SearchBoard"
 import SearchResults from "../Search/SearchResults";
 
@@ -15,58 +15,63 @@ const getComponentSize = width => {
     }
 }
 
-const SearchPage = ({gameData, windowWidth}) => {
-    const [filterValue, setFilterValue] = useState({title: '', sort: 0, player: 0, weight: 0, system: '전체'});
-    const [searchGameData, setSearchGameData] = useState(gameData);
+const sortFunc = [
+    (dataA, dataB) => dataA.title > dataB.title ? 1 : -1,
+    (dataA, dataB) => dataB.like - dataA.like,
+    (dataA, dataB) => dataB.rating - dataA.rating,
+    (dataA, dataB) => dataB.reviewers - dataA.reviewers,
+]
+
+const SearchPage = ({windowWidth}) => {
+    const { sort, player, weight, system } = useFilter();
     const [renderNum, setRenderNum] = useState(0);
+    const [title, setTitle] = useState('');
+    const [searchGameData, setSearchGameData] = useState(null);
     const [componentSize, setComponentSize] = useState(getComponentSize(windowWidth));
-    
-    const changeSearchWord = str => setFilterValue({...filterValue, title: trimString(str)});
-    const changeSort = num => setFilterValue({...filterValue, sort: num});
-    const changePlayer = num => setFilterValue({...filterValue, player: num});
-    const changeWeight = num => setFilterValue({...filterValue, weight: num});
-    const changeSystem = str => setFilterValue({...filterValue, system: str});
 
     useEffect(() => setComponentSize(getComponentSize(windowWidth)), [windowWidth]);
+
     useEffect(() => {
         setRenderNum(6);
-        var tempData = [...gameData];
-        if(filterValue.title !== '') {
-            const temptempData = tempData.filter(data => trimString(data.title).indexOf(filterValue.title) !== -1 || trimString(data.titleEN).indexOf(filterValue.title) !== -1);
-            if(temptempData.length !== 0) {
-                tempData = temptempData;
+        if(searchGameData !== null) {
+            var tempData = [...searchGameData];
+            tempData.sort(sortFunc[sort]);
+            setSearchGameData(tempData);
+        }
+    }, [sort]);
+
+    useEffect(() => {
+        const findGame = async() => {
+            try {
+                setRenderNum(6);
+                var query = '?';
+                if(title !== '') {
+                    query += `title=${title}&`;
+                }
+                if(player !== 0) {
+                    query += `player=${player}&`;
+                }
+                if(weight !== 0) {
+                    query += `weight=${weight}&`;
+                }
+                if(system !== '전체') {
+                    query += `system=${system}&`;
+                }
+
+                const response = await fetch(`http://localhost:3001/boardgame/find${query}`);
+                const gameData = await response.json();
+                setSearchGameData(gameData.data.sort(sortFunc[sort]));
+            } catch(error) {
+                console.log(error);
             }
-        }
-        if(filterValue.player === 7) {
-            tempData = tempData.filter(data => data.player[1] >= 7);
-        }
-        else if(filterValue.player !== 0) {
-            tempData = tempData.filter(data => data.player[0] <= filterValue.player && data.player[1] >= filterValue.player);
-        }
-        if(filterValue.weight !== 0) {
-            tempData = tempData.filter(data => data.weight === filterValue.weight);
-        }
-        if(filterValue.system !== '전체') {
-            tempData = tempData.filter(data => data.system.indexOf(filterValue.system) >= 0);
-        }
-        if(filterValue.sort === 0) {
-            tempData.sort((dataA, dataB) => dataA.title > dataB.title ? 1 : -1);
-        }
-        else if(filterValue.sort === 1) {
-            tempData.sort((dataA, dataB) => dataB.like - dataA.like);
-        }
-        else if(filterValue.sort === 2) {
-            tempData.sort((dataA, dataB) => dataB.rating - dataA.rating);
-        }
-        else {
-            tempData.sort((dataA, dataB) => dataB.reviewers - dataA.reviewers);
-        }
-        setSearchGameData(tempData);
-    }, [filterValue])
+        };
+        const timer = setTimeout(() => findGame(), 500);
+        return () => clearTimeout(timer);
+    }, [title, player, weight, system]);
 
     return(
         <>
-            <SearchBoard componentSize={componentSize} changeSearchWord={changeSearchWord} changeSort={changeSort} changePlayer={changePlayer} changeWeight={changeWeight} changeSystem={changeSystem} />
+            <SearchBoard componentSize={componentSize} changeTitle={setTitle} />
             <SearchResults gameData={searchGameData} windowWidth={windowWidth} componentSize={componentSize} renderNum={renderNum} setRenderNum={setRenderNum} />
         </>
     );

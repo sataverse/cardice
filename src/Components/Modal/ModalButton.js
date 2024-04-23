@@ -10,14 +10,14 @@ const ModalButtonWrapper = styled.button`
     text-align: center;
     color: white;
     background-color: var(--main-01);
-`
+`;
 
 const ModalButton = ({text, onClick}) => {
     return(
-        <ModalButtonWrapper className="center" onClick={() => onClick()}>
+        <ModalButtonWrapper className='center' onClick={() => onClick()}>
             {text}
         </ModalButtonWrapper>
-    )
+    );
 }
 
 export default ModalButton;

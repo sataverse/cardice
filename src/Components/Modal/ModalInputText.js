@@ -16,11 +16,11 @@ const ModalInputTextWrapper = styled.input`
     &:focus {
         border: 2px solid var(--main-01);
     }
-`
+`;
 
 const ModalInputText = ({type, placeholder, changeText}) => {
     return(
-        <ModalInputTextWrapper className="center" type={type} placeholder={placeholder} onChange={e => changeText(e.target.value)} />
+        <ModalInputTextWrapper className='center' type={type} placeholder={placeholder} onChange={e => changeText(e.target.value)} />
     )
 }
 

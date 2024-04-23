@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import MainBannerImage from "./MainBannerImage";
 import MainBannerButtonGroup from "./MainBannerButtonGroup";
 
-const MainBannerWrapper = styled.div`
+const MainBannerWrapper = styled.div.attrs(props => ({
+    style: { height: `${props.$height}px` }
+}))`
     position: relative;
     width: 100%;
-    height: ${(props) => `${props.$windowWidth * 1 / 4}px`};
-`
+`;
 
-const imageLinks = ["/bannerImg/main1.png", "/bannerImg/main2.png", "/bannerImg/main3.png", "/bannerImg/main4.png", "/bannerImg/main5.png"];
+const imageLinks = ['/bannerImg/main1.png', '/bannerImg/main2.png', '/bannerImg/main3.png', '/bannerImg/main4.png', '/bannerImg/main5.png'];
 
 const MainBanner = ({windowWidth}) => {
     const [showIndex, setShowIndex] = useState(0);
@@ -20,9 +21,9 @@ const MainBanner = ({windowWidth}) => {
     }, [showIndex]);
 
     return(
-        <MainBannerWrapper className="center" $windowWidth={windowWidth}>
+        <MainBannerWrapper className='center' $height={windowWidth * 1 / 4}>
             {imageLinks.map((data, index) => <MainBannerImage key={index} link={data} opacity={index === showIndex ? 1 : 0} zindex={getZindex(index)} />)}
-            <MainBannerButtonGroup bannerArray={imageLinks} showIndex={showIndex} setShowIndex={setShowIndex} />
+            {windowWidth > 720 ? <MainBannerButtonGroup bannerArray={imageLinks} showIndex={showIndex} setShowIndex={setShowIndex} /> : null}
         </MainBannerWrapper>
     );
 }

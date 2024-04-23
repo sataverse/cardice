@@ -1,47 +1,42 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from 'react'
-
-import Card from './Card'
-import LeftButton from "../Svg/LeftButton";
-import RightButton from "../Svg/RightButton";
+import React, { useState, useEffect } from "react";
+import Card from "./Card";
+import { LeftButton, RightButton } from "../Svg/DirectionIcon";
 
 const CardSliderWrapper = styled.div`
     padding: 0 5px 0 5px;
-`
+`;
 
-const CardSliderHeader = styled.div`
+const CardSliderHeader = styled.div.attrs(props => ({
+    style: { width: `${props.$sliderwidth - 20}px` }
+}))`
     margin-bottom: 10px;
-    width: ${(props) => `${props.$sliderWidth - 20}px`};
-`
+`;
 
-const CardSliderTitle = styled.div`
-    font-size: ${(props) => `${props.$fontSize}rem`};
-`
+const CardSliderTitle = styled.div.attrs(props => ({
+    style: { fontSize: `${props.$fontsize}rem` }
+}))``;
 
-const CardSliderLink = styled.button`
-    color: var(--blue-00);
-    background-color: transparent;
-`
-
-const CardSliderCardsWrapper = styled.div`
+const CardSliderCardsWrapper = styled.div.attrs(props => ({
+    style: { width: `${props.$sliderwidth}px` }
+}))`
     overflow: hidden;
-    width: ${(props) => `${props.$sliderWidth}px`};
-`
+`;
 
 const CardSliderButtonWrapper = styled.div`
     width: 30px;
-`
+`;
 
-const CardSliderButton = styled.div`
+const CardSliderButton = styled.button.attrs(props => ({
+    style: { top: `${props.$cardwidth * 1.2 / 2 - 15}px` }
+}))`
     position: relative;
     height: 30px;
-    top: ${(props) => `${props.$cardWidth * 1.2 / 2 - 15}px`};
-    &:hover {
-        cursor: pointer;
-    }
-`
+    padding: 0;
+    background-color: transparent;
+`;
 
-const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
+const CardSlider = ({title, gameData, componentSize, buttonColor}) => {
     const [cardIndex, setCardIndex] = useState(0);
     const [moveButtonVisible, setMoveButtonVisible] = useState({left: false, right: false});
     const isMin = () => cardIndex <= 0;
@@ -90,23 +85,22 @@ const CardSlider = ({title, gameData, componentSize, buttonColor, link}) => {
 
     return(
         <CardSliderWrapper>
-            <CardSliderHeader className="frow fjsbetween faend center" $sliderWidth={componentSize.sliderWidth}>
-                {!title ? null : <CardSliderTitle $fontSize={componentSize.titleFont}>{title}</CardSliderTitle>}
-                {!link ? null : <CardSliderLink>{'더 보기'}</CardSliderLink>}
+            <CardSliderHeader className='frow fjsbetween faend center' $sliderwidth={componentSize.sliderWidth}>
+                {!title ? null : <CardSliderTitle $fontsize={componentSize.titleFont}>{title}</CardSliderTitle>}
             </CardSliderHeader>
-            <div className="frow fjcenter">
+            <div className='frow fjcenter'>
                 <CardSliderButtonWrapper onMouseOver={() => showMoveButton(0)} onMouseOut={() => hideMoveButton(0)}>
-                    {!isMin() && moveButtonVisible.left ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderLeft()}><LeftButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
+                    {!isMin() && moveButtonVisible.left ? <CardSliderButton $cardwidth={componentSize.cardWidth} onClick={() => moveSliderLeft()}><LeftButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
                 </CardSliderButtonWrapper>
-                <CardSliderCardsWrapper className="frow" $sliderWidth={componentSize.sliderWidth}>
-                    {gameData.map((data, i) => <Card key={i + 1} number={i + 1} gameInfo={data} componentSize={componentSize} posX={cardIndex * (componentSize.cardWidth + 20)} />)} 
+                <CardSliderCardsWrapper className='frow' $sliderwidth={componentSize.sliderWidth}>
+                    {gameData.map((data, i) => <Card key={data.id} number={i + 1} gameInfo={data} componentSize={componentSize} posX={cardIndex * (componentSize.cardWidth + 20)} />)} 
                 </CardSliderCardsWrapper>
                 <CardSliderButtonWrapper onMouseOver={() => showMoveButton(1)} onMouseOut={() => hideMoveButton(1)}>
-                    {!isMax() && moveButtonVisible.right ? <CardSliderButton $cardWidth={componentSize.cardWidth} onClick={() => moveSliderRight()}><RightButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
+                    {!isMax() && moveButtonVisible.right ? <CardSliderButton $cardwidth={componentSize.cardWidth} onClick={() => moveSliderRight()}><RightButton width={30} height={30} color={buttonColor} /></CardSliderButton> : null}
                 </CardSliderButtonWrapper>
             </div>
         </CardSliderWrapper>
     );
 }
 
-export default CardSlider
+export default CardSlider;

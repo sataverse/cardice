@@ -1,57 +1,68 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { useSort, usePlayer, useWeight, useSystem } from "../../Modules/store";
 import FilterButtons from "./FilterButtons";
 import CloseButton from "../Others/CloseButton";
 import { SearchIcon } from "../Svg/NavigationIcon";
-import FilterIcon from "../Svg/FilterIcon";
-import { useState, useEffect } from "react";
+import { FilterIcon } from "../Svg/ButtonIcon";
 
 const SearchBoardWrapper = styled.div`
     margin-top: 30px;
-`
+`;
 
-const SearchBarOuterWrapper = styled.div`
-    width: ${(props) => `${props.$width}px`};
+const SearchBarOuterWrapper = styled.div.attrs(props => ({
+    style: { width: `${props.$width}px`, border: props.$border ? '2px solid var(--main-00)' : '2px solid transparent' }
+}))`
     height: 30px;
     padding: 0 12px 0 6px;
     border-radius: 4px;
     background-color: var(--gray-02);
-    border: ${(props) => props.$border ? '2px solid var(--main-00)' : '2px solid transparent'};
-`
+`;
 
 const SearchBarInnerWrapper = styled.div`
     position: relative;
     top: 3px;
-`
+`;
 
-const SearchBar = styled.input`
+const SearchBar = styled.input.attrs(props => ({
+    style: { width: `${props.$width}px`}
+}))`
     outline: none;
-    width: ${(props) => `${props.$width}px`};
     height: 24px;
     padding: 0 10px 0 10px;
     border : 0;
     background-color: transparent;
-`
+`;
 
-const FilterBoxWrapper = styled.div`
-    display: ${(props) => props.$display ? 'block' : 'none'};
-    width: ${(props) => `${props.$width}px`};
+const FilterBoxWrapper = styled.div.attrs(props => ({
+    style: { display: props.$display ? 'block' : 'none', width: `${props.$width}px`}
+}))`
     margin-top: 10px;
     padding: 10px;
     border-radius: 4px;
     background-color: var(--gray-02);
-`
+`;
 
 const FilterBoxButton = styled.button`
     width: 100px;
     margin-left: 10px;
     border-radius: 4px;
     background-color: var(--gray-02);
-`
+`;
 
 const ButtonText = styled.div`
     width: 50px;
     text-align: center;
-`
+`;
+
+const FilterInitButton = styled.button`
+    display: block;
+    margin-top: 10px;
+    padding: 0;
+    border-radius: 4px;
+    color: #959595;
+    background-color: transparent;
+`;
 
 const filterItems = [
     [{value: 0, buttonText: '제목'}, {value: 1, buttonText: '좋아요'}, {value: 2, buttonText: '평점'}, {value: 3, buttonText: '리뷰'}],
@@ -96,40 +107,51 @@ const filterItems = [
         { value: '협력', buttonText: '협력' },
         { value: '협상', buttonText: '협상' }
     ]
-]
+];
 
-const SearchBoard = ({componentSize, changeSearchWord, changeSort, changePlayer, changeWeight, changeSystem}) => {
+const SearchBoard = ({componentSize, changeTitle}) => {
+    const { sort, setSort } = useSort();
+    const { player, setPlayer } = usePlayer();
+    const { weight, setWeight } = useWeight();
+    const { system, setSystem } = useSystem();
     const [isMouseOver, setMouseOver] = useState(false);
     const [isFocus, setFocus] = useState(false);
     const [filterBoxStatus, setFilterBoxStatus] = useState(false);
     const [searchWord, setSearchWord] = useState('');
+    const initFilter = () => {
+        setPlayer(0);
+        setWeight(0);
+        setSystem('전체');
+        setSort(0);
+    }
     useEffect(() => {
-        const timer = setTimeout(() => changeSearchWord(searchWord), 500);
+        const timer = setTimeout(() => changeTitle(searchWord), 500);
         return () => clearTimeout(timer);
     }, [searchWord]);
 
     return(
         <SearchBoardWrapper>
-            <div className="frow fjcenter">
+            <div className='frow fjcenter'>
                 <SearchBarOuterWrapper $width={componentSize.infoBoxWidth - 132} $border={isMouseOver || isFocus} onMouseOver={() => setMouseOver(true)} onMouseOut={() => setMouseOver(false)}>
                     <SearchBarInnerWrapper>
-                        <label className="frow fjsbetween">
+                        <label className='frow fjsbetween'>
                             <SearchIcon width={24} height={24} />
-                            <SearchBar type="text" value={searchWord} $width={componentSize.infoBoxWidth - 200} onChange={e => setSearchWord(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} />
+                            <SearchBar type='text' value={searchWord} $width={componentSize.infoBoxWidth - 200} onChange={e => setSearchWord(e.target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} />
                             <CloseButton width={24} onClick={() => setSearchWord('')} />
                         </label>
                     </SearchBarInnerWrapper>
                 </SearchBarOuterWrapper>
-                <FilterBoxButton className="frow fjsaround facenter" onClick={() => setFilterBoxStatus(!filterBoxStatus)}>
+                <FilterBoxButton className='frow fjsaround facenter' onClick={() => setFilterBoxStatus(!filterBoxStatus)}>
                     <FilterIcon width={24} height={24} />
                     <ButtonText>{filterBoxStatus ? '숨기기' : '필터'}</ButtonText>
                 </FilterBoxButton>
             </div>
-            <FilterBoxWrapper className="center" $display={filterBoxStatus} $width={componentSize.infoBoxWidth - 20}>
-                <FilterButtons type={'정렬 기준'} items={filterItems[0]} changeFilterValue={changeSort}/>
-                <FilterButtons type={'인원 수'} items={filterItems[1]} changeFilterValue={changePlayer}/>
-                <FilterButtons type={'난이도'} items={filterItems[2]} changeFilterValue={changeWeight}/>
-                <FilterButtons type={'시스템'} items={filterItems[3]} changeFilterValue={changeSystem}/>
+            <FilterBoxWrapper className='fcol center' $display={filterBoxStatus} $width={componentSize.infoBoxWidth - 20}>
+                <FilterButtons type={'정렬 기준'} items={filterItems[0]} currentValue={sort} changeFilterValue={setSort}/>
+                <FilterButtons type={'인원 수'} items={filterItems[1]} currentValue={player} changeFilterValue={setPlayer}/>
+                <FilterButtons type={'난이도'} items={filterItems[2]} currentValue={weight} changeFilterValue={setWeight}/>
+                <FilterButtons type={'시스템'} items={filterItems[3]} currentValue={system} changeFilterValue={setSystem}/>
+                <FilterInitButton className='font5 center' onClick={() => initFilter()}>{'초기화'}</FilterInitButton>
             </FilterBoxWrapper>
         </SearchBoardWrapper>
     );

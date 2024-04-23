@@ -3,11 +3,11 @@ import { RankIcon } from "../Svg/NavigationIcon";
 
 const Text = styled.div`
     margin-left: ${(props) => `${props.$margin}px`};
-`
+`;
 
 const DetailInfoBoxRanking = ({gameInfo}) => {
     return (
-        <div className="frow facenter">
+        <div className='frow facenter'>
             <RankIcon width={20} height={20} />
             <Text $margin={10}>{'종합 순위:'}</Text>
             <Text $margin={5}>{`${gameInfo.ranking[0]}위`}</Text>

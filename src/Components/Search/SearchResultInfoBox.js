@@ -1,29 +1,30 @@
 import styled from "styled-components";
 
-const SearchResultInfoBoxWrapper = styled.div`
+const SearchResultInfoBoxWrapper = styled.div.attrs(props => ({
+    style: { marginRight: `${props.$marginright}px` }
+}))`
     width: 100px;
     height: 50px;
-    margin-right: ${(props) => `${props.$marginRight}px`};
     border-radius: 4px;
     background-color: white;
-`
+`;
 
 const SearchResultInfoBoxType = styled.div`
     text-align: center;
     color: #959595;
-`
+`;
 
-const SearchResultInfoBoxText = styled.div`
+const SearchResultInfoBoxText = styled.div.attrs(props => ({
+    style: { fontSize: `${props.$fontsize}rem`, color: props.$textcolor }
+}))`
     text-align: center;
-    font-size: ${(props) => `${props.$fontSize}rem`};
-    color: ${(props) => props.$textColor};
-`
+`;
 
 const SearchResultInfoBox = ({componentSize, type, text, color}) => {
     return(
-        <SearchResultInfoBoxWrapper $marginRight={componentSize.margin}>
-            <SearchResultInfoBoxType className="font2">{type}</SearchResultInfoBoxType>
-            <SearchResultInfoBoxText $fontSize={componentSize.fontSize} $textColor={color}>{text}</SearchResultInfoBoxText>
+        <SearchResultInfoBoxWrapper $marginright={componentSize.margin}>
+            <SearchResultInfoBoxType className='font2'>{type}</SearchResultInfoBoxType>
+            <SearchResultInfoBoxText $fontsize={componentSize.fontSize} $textcolor={color}>{text}</SearchResultInfoBoxText>
         </SearchResultInfoBoxWrapper>
     );
 }
