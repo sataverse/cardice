@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-const GameImage = styled.img`
+const GameImage = styled.img.attrs(props => ({
+    style: { width: `${props.$imagewidth}px` }
+}))`
     border-radius: 4px;
-    width: ${(props) => `${props.$imageWidth}px`};
     object-fit: cover;
-`
+`;
 
 const DetailInfoBoxImage = ({width, link}) => {
     return (
-        <GameImage src={link} $imageWidth={width} />
+        <GameImage src={link} $imagewidth={width} />
     );
 }
 

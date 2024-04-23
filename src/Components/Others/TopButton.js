@@ -12,7 +12,7 @@ const TopButtonWrapper = styled.button`
     background-color: white;
     z-index: 98;
     box-shadow: 0px 0px 5px 2px var(--gray-01);
-`
+`;
 
 const TopButton = () => {
     return(

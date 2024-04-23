@@ -1,28 +1,28 @@
 import styled from "styled-components";
-import {getFloatFixed, getColorRating} from "../../Modules/util";
-import RatingStar from "../Svg/RatingStar";
+import { getColorRating } from "../../Modules/util";
+import DonutChart from "../Others/DonutChart";
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.div.attrs(props => ({
+    style: { color: props.$textcolor }
+}))`
     margin-left: 20px;
-    color: ${(props) => props.$textColor};
-`
+`;
 
-const Text = styled.div`
-    font-size: ${(props) => `${props.$fontSize}rem`};
-    color: ${(props) => props.$textColor};
-`
+const Text = styled.div.attrs(props => ({
+    style: { fontSize: `${props.$fontsize}rem`, color: props.$textcolor }
+}))``;
 
-const DetailInfoBoxHeader = ({textColor, gameInfo, componentSize}) => {
+const DetailInfoBoxHeader = ({textColor, backgroundColor, gameInfo, componentSize}) => {
     return (
-        <div className="frow facenter">
-            <RatingStar width={componentSize.starSize} height={componentSize.starSize} color={getColorRating(gameInfo.rating)} rating={getFloatFixed(gameInfo.rating, 1)} posX={34} />
-            <TitleWrapper className="fcol fjsbetween">
-                <div className="frow facenter">
-                    <Text $fontSize={componentSize.titleFont - 0.1} $textColor={textColor}>{gameInfo.title}</Text>
-                    <Text className="margin5" $fontSize={componentSize.basicFont} $textColor={textColor}>{`(${gameInfo.year})`}</Text>
+        <div className='frow facenter'>
+            <DonutChart width={componentSize.chartSize} percent={gameInfo.rating * 10} backgroundColor={getColorRating(gameInfo.rating)} centerColor={backgroundColor} textColor={textColor} />
+            <TitleWrapper className='fcol fjsbetween'>
+                <div className='frow facenter'>
+                    <Text $fontsize={componentSize.titleFont - 0.1} $textcolor={textColor}>{gameInfo.title}</Text>
+                    <Text className='margin5' $fontsize={componentSize.basicFont} $textcolor={textColor}>{`(${gameInfo.year})`}</Text>
                 </div>
-                <Text $fontSize={componentSize.basicFont - 0.1} $textColor={textColor}>{gameInfo.titleEN}</Text>
-                <Text $fontSize={componentSize.basicFont - 0.1} $textColor={textColor}>{`${gameInfo.reviewers} 명이 평가함`}</Text>
+                <Text $fontsize={componentSize.basicFont - 0.1} $textcolor={textColor}>{gameInfo.titleEN}</Text>
+                <Text $fontsize={componentSize.basicFont - 0.1} $textcolor={textColor}>{`${gameInfo.reviewers} 명이 평가함`}</Text>
             </TitleWrapper>
         </div>        
     );

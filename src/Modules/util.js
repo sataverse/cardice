@@ -2,6 +2,7 @@ const color = ['var(--gray-00)', 'var(--blue-00)', 'var(--cyan-00)', 'var(--gree
 
 export const saveLocalStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 export const loadLocalStorage = key => JSON.parse(localStorage.getItem(key));
+export const clearLocalStorage = () => localStorage.clear();
 export const trimString = str => str.toLowerCase().replace(/(\s*)/g, "").replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi,'');
 export const getFloatFixed = (value, fixed) => value >= 10 ? 10 : parseFloat(Math.round(value * 100) / 100).toFixed(fixed);
 export const getRangeText = (min, max) => min == max ? min : `${min} ~ ${max}`;
