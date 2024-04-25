@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "./Card";
 import { LeftButton, RightButton } from "../Svg/DirectionIcon";
 
@@ -37,6 +38,7 @@ const CardSliderButton = styled.button.attrs(props => ({
 `;
 
 const CardSlider = ({title, gameData, componentSize, buttonColor}) => {
+    const { search } = useLocation();
     const [cardIndex, setCardIndex] = useState(0);
     const [moveButtonVisible, setMoveButtonVisible] = useState({left: false, right: false});
     const isMin = () => cardIndex <= 0;
@@ -81,7 +83,11 @@ const CardSlider = ({title, gameData, componentSize, buttonColor}) => {
         if(cardIndex > max) {
             setCardIndex(max);
         }
-    }, [componentSize.sliderWidth])
+    }, [componentSize.sliderWidth]);
+
+    useEffect(() => {
+        setCardIndex(0);
+    }, [search]);
 
     return(
         <CardSliderWrapper>
