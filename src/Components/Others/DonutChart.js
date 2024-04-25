@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const DonutChartBackground = styled.div.attrs(props => ({
     style: { 
@@ -46,8 +48,22 @@ const TextPercent = styled.div.attrs(props => ({
 `;
 
 const DonutChart = ({width, percent, backgroundColor, centerColor, textColor}) => {
+    const { search } = useLocation();
+    const [currentPercent, setCurrentPercent] = useState(0);
+    useLayoutEffect(() => {
+        const time = 500;
+        const max = Math.round(percent);
+        const interval = setInterval(() => {
+            setCurrentPercent(current => (current < max ? current + 1 : max));
+        }, time / max);
+        return () => {
+            setCurrentPercent(0);
+            clearInterval(interval);
+        }
+    }, [percent, search]);
+
     return (
-        <DonutChartBackground $width={width} $backgroundcolor={backgroundColor} $percent={percent}>
+        <DonutChartBackground $width={width} $backgroundcolor={backgroundColor} $percent={currentPercent}>
             <DonutChartCenter $width={width * 0.8} $backgroundcolor={centerColor}>
                 <Text className='frow fjcenter facenter'>
                     <TextNumber $textcolor={textColor}>{Math.round(percent)}</TextNumber>
