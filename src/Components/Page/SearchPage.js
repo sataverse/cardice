@@ -58,7 +58,7 @@ const SearchPage = ({windowWidth}) => {
                     query += `system=${system}&`;
                 }
 
-                const response = await fetch(`http://localhost:3001/boardgame/find${query}`);
+                const response = await fetch(`http://localhost:3030/boardgame/find${query}`);
                 const gameData = await response.json();
                 setSearchGameData(gameData.data.sort(sortFunc[sort]));
             } catch(error) {

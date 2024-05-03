@@ -36,7 +36,7 @@ const MainPage = ({windowWidth}) => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch('http://localhost:3001/boardgame/list');
+                const response = await fetch('http://localhost:3030/boardgame/list');
                 const jsonData = await response.json();
                 setGameListData(jsonData.data);
             } catch(error) {

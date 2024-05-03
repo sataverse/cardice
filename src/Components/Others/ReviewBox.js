@@ -21,7 +21,7 @@ const ReviewBox = ({review, changeModal}) => {
     const [likeNum, setLikeNum] = useState(review.like);
 
     const likeReview = async () => {
-        const response = await fetch('http://localhost:3001/review/like', {
+        const response = await fetch('http://localhost:3030/review/like', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ token: loadLocalStorage('token'), reviewid: review.id, userid: loadLocalStorage('id'), status: !getLikeStatus() })

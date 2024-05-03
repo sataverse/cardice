@@ -27,7 +27,7 @@ const RankPage = ({windowWidth}) => {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch('http://localhost:3001/boardgame/all');
+                const response = await fetch('http://localhost:3030/boardgame/all');
                 const gameData = await response.json();
                 const sortData = [
                     gameData.data.sort((a, b) => a.ranking[0] - b.ranking[0]).slice(0, 60), 
