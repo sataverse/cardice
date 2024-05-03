@@ -92,7 +92,7 @@ const ModalSignUp = ({changeModal, fail, setFail, setSigninStatus}) => {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/user/signup', {
+            const response = await fetch('http://localhost:3030/user/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ token, email, nickname, password: passwd })

@@ -24,7 +24,7 @@ const UserPage = ({windowWidth}) => {
             try {
                 const likeGameIds = loadLocalStorage('like').boardgame;
                 if(likeGameIds.length > 0) {
-                    var response = await fetch(`http://localhost:3001/boardgame?id=${likeGameIds.join(',')}`);
+                    var response = await fetch(`http://localhost:3030/boardgame?id=${likeGameIds.join(',')}`);
                     const jsonData = await response.json();
                     setLikeGameData(jsonData.data);
                 }
@@ -32,11 +32,11 @@ const UserPage = ({windowWidth}) => {
                 const reviewIds = loadLocalStorage('review');
                 if(reviewIds.length > 0) {
                     const tempData = [[], [], [], [], [], [], [], [], [], []];
-                    response = await fetch(`http://localhost:3001/review?id=${reviewIds.join(',')}`);
+                    response = await fetch(`http://localhost:3030/review?id=${reviewIds.join(',')}`);
                     const reviewJsonData = await response.json();
 
                     const reviewGameIds = reviewJsonData.data.map(item => item.gameid);
-                    response = await fetch(`http://localhost:3001/boardgame?id=${reviewGameIds.join(',')}`);
+                    response = await fetch(`http://localhost:3030/boardgame?id=${reviewGameIds.join(',')}`);
                     const gameJsonData = await response.json();
                     for(var i = 0; i < reviewJsonData.data.length; i++) {
                         tempData[10 - reviewJsonData.data[i].rating].push(gameJsonData.data[i]);

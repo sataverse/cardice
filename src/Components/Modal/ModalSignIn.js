@@ -20,7 +20,7 @@ const ModalSignIn = ({changeModal, fail, setFail, setSigninStatus}) => {
 
     const clickSignInButton = async () => {
         try {
-            const response = await fetch('http://localhost:3001/user/signin', {
+            const response = await fetch('http://localhost:3030/user/signin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ token, email, password: passwd })

@@ -49,7 +49,7 @@ const DetailPage = ({windowWidth, changeModal}) => {
         (async () => {
             try {
                 const gameId = parseInt(searchParams.get('id'));
-                var response = await fetch(`http://localhost:3001/boardgame?id=${gameId}`);
+                var response = await fetch(`http://localhost:3030/boardgame?id=${gameId}`);
                 const gameData = await response.json();
                 if(!gameData.data[0]) {
                     navigate('/error');
@@ -57,11 +57,11 @@ const DetailPage = ({windowWidth, changeModal}) => {
                 }
                 setGameInfo(gameData.data[0]);
 
-                response = await fetch(`http://localhost:3001/boardgame?id=${gameData.data[0].anotherGames.join(',')}`);
+                response = await fetch(`http://localhost:3030/boardgame?id=${gameData.data[0].anotherGames.join(',')}`);
                 const recommends = await response.json();
                 setRecommendGameData(recommends.data);
 
-                response = await fetch(`http://localhost:3001/review?id=${gameData.data[0].review.join(',')}`);
+                response = await fetch(`http://localhost:3030/review?id=${gameData.data[0].review.join(',')}`);
                 const reviews = await response.json();
                 setReviewData(reviews.data);
                 

@@ -13,7 +13,7 @@ const DetailInfoBoxButtons = ({isWindowSmall, gameInfo, myReview, saveMyReview, 
 
     const likeGame = async () => {
         try {
-            const response = await fetch('http://localhost:3001/boardgame/like', {
+            const response = await fetch('http://localhost:3030/boardgame/like', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ token, gameid: gameInfo.id, userid: loadLocalStorage('id'), status: !getLikeStatus() })
@@ -42,7 +42,7 @@ const DetailInfoBoxButtons = ({isWindowSmall, gameInfo, myReview, saveMyReview, 
         try {
             const today = new Date();
             if(!myReview) {
-                const response = await fetch('http://localhost:3001/review/register', {
+                const response = await fetch('http://localhost:3030/review/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json'},
                     body: JSON.stringify({ 
@@ -70,7 +70,7 @@ const DetailInfoBoxButtons = ({isWindowSmall, gameInfo, myReview, saveMyReview, 
                 }
             }
             else {
-                const response = await fetch('http://localhost:3001/review/modify', {
+                const response = await fetch('http://localhost:3030/review/modify', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json'},
                     body: JSON.stringify({ 
@@ -102,7 +102,7 @@ const DetailInfoBoxButtons = ({isWindowSmall, gameInfo, myReview, saveMyReview, 
 
     const deleteReview = async () => {
         try {
-            const response = await fetch('http://localhost:3001/review/delete', {
+            const response = await fetch('http://localhost:3030/review/delete', {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ 
