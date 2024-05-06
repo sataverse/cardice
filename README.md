@@ -1,6 +1,7 @@
 
 ### API 서버 Github 링크
 
+동시에 실행해 주세요.
 https://github.com/sataverse/cardice-api-server
 
 
